@@ -1,0 +1,4 @@
+interface:
+  display_name: "Beautiful Bend"
+  short_description: "Write clear, idiomatic Bend 2 code and proofs"
+  default_prompt: "Use $bend-best-practices to write and validate idiomatic Bend for this project."

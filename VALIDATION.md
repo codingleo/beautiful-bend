@@ -1,0 +1,91 @@
+# Validation record — 2026-10-24
+
+Environment: Linux x86_64, Python 3.12.14, Node v24.19.0, Bun 1.4.4.
+Bend: **2.0.39**, upstream commit
+`295e996574573e3a88827b1cf7045b437333c8f0`. The site, source CLI version constant,
+and executed `bend version` agreed. No Bend compiler was preinstalled.
+
+## Reproduce the checks
+
+The official installer request returned HTTP 403. It was not retried or fetched
+through another endpoint. An independently available source checkout was used
+with upstream's documented Bun entry point, rather than the packaged installer.
+To reproduce that source-toolchain arrangement in a fresh writable directory:
+
+```sh
+git clone https://github.com/bendlang/bend.git bend-source
+git -C bend-source checkout --detach 295e996574573e3a88827b1cf7045b437333c8f0
+npm install --prefix bend-tools bun@1.4.4 --no-audit --no-fund
+```
+
+Put a wrapper named `bend` on PATH (replace both paths with absolute paths):
+
+```sh
+#!/bin/sh
+export BEND_NO_TELEMETRY=1
+exec /absolute/bend-tools/node_modules/.bin/bun /absolute/bend-source/bend2/main.ts "$@"
+```
+
+The source runner can read Bun project configuration; use it on reviewed local
+fixtures. No upstream compiler code was patched. `BEND_NO_TELEMETRY=1` disables
+the CLI's daily version check. Source checkout and tools stay outside this repo.
+
+From the Beautiful Bend root:
+
+```sh
+python3 scripts/validate.py --structure-only
+python3 -m unittest discover -s tests -v
+python3 scripts/validate.py --bend /absolute/path/to/bend --report .validation/results.json
+```
+
+The full harness checks every bundled example, compares exact normalized and JS
+output, requires specific negative diagnostics, and mutates a copy of the
+counter implementation and proof import. It does not execute unsafe negative
+fixtures. Default full mode fails on a missing or wrong Bend; structure-only is
+an explicitly weaker mode. All subprocesses have a 60-second timeout.
+
+## Evidence and limits
+
+The final repeatable harness passed **43 commands** plus structural checks on
+2026-10-24. It accepted all nine positive files (the seven runnable entry
+points, counter module, and proof entry). All seven runnable examples
+were emitted to JS and executed under Node with their documented outputs; the
+six pure mains also produced the same outputs by checker normalization.
+`bend examples/laws/PROOF.bend` printed `ALL PROOFS CHECK` and exited 0.
+
+All nine negative cases failed with their expected diagnostics. A copy of the
+counter changed to credit two units per step failed its proof; a proof entry
+that omitted the law import also failed. Original law files were not changed.
+The command/output/exit-status record is generated at `.validation/results.json`
+by the command above (ignored by Git so repeated local runs do not dirty the
+patch). The shipped manifest contains all exact expected outputs.
+
+Skill-creator `quick_validate.py` passed. Six validator integrity tests passed,
+including rejection of unrelated compiler failures, wrong output, and a zero
+exit without a proof verdict. Local Markdown links, plugin metadata consistency,
+standalone licensing and fixture coverage passed. These structural checks are
+not an official host schema validation.
+
+The complete skill was also copied to a fresh temporary directory: skill
+validation and its relocated `PROOF.bend` both passed. The workflow YAML parsed,
+and its environment-file and wrapper-generation steps were exercised locally;
+the remote Actions runner itself has not been exercised.
+
+| Check | Status / limit |
+|---|---|
+| Ordinary Bend checking, normalization, JS compilation/execution | Passed in the full harness; exact expectations in `tests/cases.json` |
+| Laws | Two claims accepted by the ordinary checker; not kernel-verified |
+| Astra forward use | One fresh agent task passed; [record and code](evals/results/2026-10-24.md) |
+| Official installer | `curl -fsSL https://bend-lang.com/install.sh -o /tmp/beautiful-bend-install.sh` returned HTTP 403; no script executed |
+| BendTT `--verdict` | Attempted on the proof entry; failed before verification with `EROFS: read-only file system, mkdir '/home/agent/.bend'`. Lean/elan were also absent. No retry or permission workaround |
+| Native CPU | Not run: no clang was available; GCC alone is not the documented native toolchain |
+| GPU and performance | Not run; no speed or scaling evidence |
+| Claude plugin host | CLI absent; local structure checks do not replace `claude plugin validate . --strict` |
+| Codex auto-discovery | Not exercised; explicit skill use was exercised |
+| Remote CI | Workflow prepared, not run remotely; branch not published |
+| Other platforms/features | No macOS, CUDA/Metal, networking, custom effects, GUI/audio, or recovery-path tests |
+
+Plain checker success is not BendTT kernel verification; even kernel acceptance
+would not prove all unstated requirements, foreign implementations or runtime
+behavior. The references distinguish language facts from editorial style advice.
+No controlled with/without-skill comparison or model improvement claim is made.

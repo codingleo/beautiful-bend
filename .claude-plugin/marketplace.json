@@ -1,0 +1,14 @@
+{
+  "name": "beautiful-bend",
+  "owner": {
+    "name": "Leonardo Ribeiro",
+    "url": "https://github.com/codingleo"
+  },
+  "plugins": [
+    {
+      "name": "beautiful-bend",
+      "source": "./",
+      "description": "A focused skill for idiomatic Bend 2."
+    }
+  ]
+}

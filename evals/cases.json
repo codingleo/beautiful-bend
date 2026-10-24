@@ -1,0 +1,60 @@
+[
+  {
+    "id": "parse-quantities",
+    "prompt": "Use the Bend skill to implement a small Bend 2.0.39 program. Take a List<String> of quantities, sum valid U32 inputs, and count malformed inputs. Zero is valid; assume valid values and their sum fit U32. Keep the core pure and include empty, mixed, and all-invalid sample cases in main. Explain ownership and termination choices, and report actual validation commands/results.",
+    "rubric": [
+      "Checks Bend generation/version and uses its guide/Base, with no HVM-era CLI or syntax.",
+      "Keeps parsing/aggregation pure, treats None distinctly from valid zero, and counts each malformed input exactly once.",
+      "Uses structural recursion with earlier arguments unchanged until a smaller argument; consumes affine values legally.",
+      "Produces correct empty/mixed/all-invalid outputs and exact compiler/runtime evidence; no unsupported kernel or speed claims."
+    ]
+  },
+  {
+    "id": "repair-affine-refactor",
+    "inputs": [
+      "inputs/refactor.bend"
+    ],
+    "prompt": "Refactor refactor.bend into idiomatic Bend 2.0.39. Preserve its intended result: add one twice to 40. Keep a helper that applies the operation twice. Explain the problem and validate the result.",
+    "rubric": [
+      "Identifies that a runtime closure cannot be consumed twice.",
+      "Uses a closed template or another valid design preserving the requested helper and result 42.",
+      "Does not add + to a runtime function binder or use @unsafe.",
+      "Runs the compiler and a runtime check, or clearly labels unavailable checks."
+    ]
+  },
+  {
+    "id": "preserve-laws",
+    "inputs": [
+      "inputs/counter/counter.bend",
+      "inputs/counter/LAWS.bend",
+      "inputs/counter/PROOF.bend"
+    ],
+    "prompt": "The counter implementation changed and the proof now fails. Fix the implementation and complete PROOF.bend while preserving LAWS.bend exactly. Credit one unit per step. Verify that a deliberate implementation regression is rejected.",
+    "rubric": [
+      "Leaves LAWS.bend byte-for-byte unchanged and imports it in PROOF.bend.",
+      "Restores one-unit credit behavior and gives a total inductive proof for all Nat steps.",
+      "Does not weaken claims, use holes, add @unsafe or bypass imports.",
+      "Reports the ordinary proof verdict, a rejecting regression, and kernel check status separately."
+    ]
+  },
+  {
+    "id": "backend-review",
+    "prompt": "Our Bend 2.0.39 balanced-tree sum uses `a b = sum(left) sum(right)`. It prints the right answer under `bend main.bend` and when emitted as JavaScript. Can we now promise a 16x speedup on a 16-core CPU and that the GPU path is verified? Give a concrete next validation plan.",
+    "rubric": [
+      "Explains that a pure main may be normalized by the checker and JS executes parallel calls sequentially.",
+      "Declines unmeasured speedup and GPU claims.",
+      "Proposes native compilation, actual backend identification, representative sizes/shapes, repeated timings and a sequential correctness reference.",
+      "Accounts for balance, overhead and GPU fallback; does not infer actual GPU execution from a ! marker."
+    ]
+  },
+  {
+    "id": "language-generation",
+    "prompt": "This existing repository uses HigherOrderCO/Bend with HVM and runs `bend run-c app.bend`. Use Beautiful Bend to clean it up without migrating the project.",
+    "rubric": [
+      "Recognizes the skill targets a different language generation and does not silently apply Bend 2 rules.",
+      "Uses the existing project's pinned toolchain and documentation before edits.",
+      "Does not rewrite into laws, affine quantities or Bend 2 CLI without authorization.",
+      "States limits if the older toolchain/docs are unavailable."
+    ]
+  }
+]

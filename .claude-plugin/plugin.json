@@ -1,0 +1,18 @@
+{
+  "name": "beautiful-bend",
+  "version": "0.1.0",
+  "description": "Teach idiomatic Bend 2 with explicit ownership, structural recursion, laws, proofs, and checked examples.",
+  "author": {
+    "name": "Leonardo Ribeiro",
+    "url": "https://github.com/codingleo"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/codingleo/beautiful-bend",
+  "repository": "https://github.com/codingleo/beautiful-bend",
+  "keywords": [
+    "bend",
+    "skill",
+    "idioms",
+    "proofs"
+  ]
+}

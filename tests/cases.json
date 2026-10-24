@@ -1,0 +1,82 @@
+{
+  "runnable": [
+    {
+      "file": "arrays.bend",
+      "stdout": "(17, 17)\n",
+      "normalize": true
+    },
+    {
+      "file": "effects.bend",
+      "stdout": "42\ninvalid number\n",
+      "normalize": false
+    },
+    {
+      "file": "invoice.bend",
+      "stdout": "(0, 390)\n",
+      "normalize": true
+    },
+    {
+      "file": "laws/main.bend",
+      "stdout": "(9n, 7n)\n",
+      "normalize": true
+    },
+    {
+      "file": "parallel_tree.bend",
+      "stdout": "10\n",
+      "normalize": true
+    },
+    {
+      "file": "parsing.bend",
+      "stdout": "(\"42\", \"invalid number\", \"0\")\n",
+      "normalize": true
+    },
+    {
+      "file": "quantities.bend",
+      "stdout": "(49, [1, 10, 42])\n",
+      "normalize": true
+    }
+  ],
+  "support": [
+    "laws/counter.bend",
+    "laws/LAWS.bend",
+    "laws/PROOF.bend"
+  ],
+  "negative": [
+    {
+      "file": "tests/negative/accumulator_first.bend",
+      "diagnostic": "a decreasing self-call"
+    },
+    {
+      "file": "tests/negative/computed_match.bend",
+      "diagnostic": "a parameter or field scrutinee"
+    },
+    {
+      "file": "tests/negative/computed_destructure.bend",
+      "diagnostic": "a parameter or field scrutinee"
+    },
+    {
+      "file": "tests/negative/copied_array.bend",
+      "diagnostic": "+cells can be used many times, so its type must be Data"
+    },
+    {
+      "file": "tests/negative/false_proof.bend",
+      "diagnostic": "expected : 0n"
+    },
+    {
+      "file": "tests/negative/reused_closure.bend",
+      "diagnostic": "consumed more than once"
+    },
+    {
+      "file": "tests/negative/unsafe_escape.bend",
+      "diagnostic": "defs that depend on @unsafe: loop"
+    },
+    {
+      "file": "tests/negative/untyped_operator.bend",
+      "diagnostic": "a type for this operator"
+    },
+    {
+      "file": "skills/bend-best-practices/examples/laws/LAWS.bend",
+      "diagnostic": "not a valid proof yet"
+    }
+  ]
+}

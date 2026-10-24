@@ -1,0 +1,45 @@
+name: Validate skill
+on: [push, pull_request]
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: '24'
+      - name: Check structure and runner integrity
+        run: |
+          python3 scripts/validate.py --structure-only
+          python3 -m unittest discover -s tests -v
+      - name: Read source toolchain pin
+        run: |
+          python3 - <<'PY'
+          import json, os
+          pin = json.load(open('toolchain.json'))
+          with open(os.environ['GITHUB_ENV'], 'a') as out:
+              out.write('BEND_COMMIT=' + pin['bend_commit'] + '\n')
+              out.write('BUN_VERSION=' + pin['bun_version'] + '\n')
+          PY
+      - name: Prepare pinned upstream source and Bun
+        run: |
+          git init "$RUNNER_TEMP/bend"
+          git -C "$RUNNER_TEMP/bend" remote add origin https://github.com/bendlang/bend.git
+          git -C "$RUNNER_TEMP/bend" fetch --depth 1 origin "$BEND_COMMIT"
+          git -C "$RUNNER_TEMP/bend" checkout --detach FETCH_HEAD
+          npm install --prefix "$RUNNER_TEMP/bend-tools" "bun@$BUN_VERSION" --no-audit --no-fund
+          mkdir -p "$RUNNER_TEMP/bin"
+          python3 - <<'PY'
+          import os, pathlib, shlex
+          temp = pathlib.Path(os.environ['RUNNER_TEMP'])
+          wrapper = temp / 'bin/bend'
+          args = [str(temp / 'bend-tools/node_modules/.bin/bun'), str(temp / 'bend/bend2/main.ts')]
+          wrapper.write_text('#!/bin/sh\nexport BEND_NO_TELEMETRY=1\nexec ' + shlex.join(args) + ' "$@"\n')
+          wrapper.chmod(0o755)
+          PY
+      - name: Check language fixtures and execute JavaScript
+        run: python3 scripts/validate.py --bend "$RUNNER_TEMP/bin/bend" --report .validation/results.json
