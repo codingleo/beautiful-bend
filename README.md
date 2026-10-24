@@ -122,6 +122,19 @@ evals/                          model tasks, inputs, rubrics, recorded evidence
 scripts/validate.py             offline structure and compiler/runtime checks
 ```
 
+## BendHub package guidance
+
+The [package reference](skills/bend-best-practices/references/packages.md) covers
+exact version/hash imports, cache behavior, provenance, dependency laws and the
+meaning of publication commands. Its resolver facts are verified against the
+pinned compiler source.
+
+**Real-package examples are blocked by registry access in this environment.**
+No external package has been source/license-audited, hash-pinned or successfully
+imported in this project yet. The corpus remains 100 cases using Base/local
+modules. See the [exact access results and remaining work](validation/2026-10-24-bendhub.md).
+Existing CI passing does not establish BendHub integration.
+
 ## Validate and contribute
 
 ```sh

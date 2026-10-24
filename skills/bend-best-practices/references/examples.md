@@ -5,6 +5,9 @@ manifest by `scripts/coverage.py`; this index and all linked examples travel
 with the standalone skill. The repository adds 25 rejection fixtures, fixed-law
 mutations and a repeatable runner. See its `VALIDATION.md` for dated evidence.
 
+These examples use Base and local modules. [BendHub guidance](packages.md)
+is source-backed documentation; real-package examples remain blocked by registry access.
+
 ## Law and proof projects
 
 Read the law before the implementation or proof. These 15 projects contain 19

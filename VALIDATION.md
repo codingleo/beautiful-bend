@@ -1,5 +1,9 @@
 # Validation record — 100 cases, 2026-10-24
 
+For the subsequent BendHub extension, see [the access/blocker record](validation/2026-10-24-bendhub.md).
+It adds package guidance but **zero verified package cases**; the 100-case results
+below remain the Base/local-module baseline, not BendHub validation.
+
 **Passed: 100/100 cases, 320/320 command expectations, and 15 validator integrity
 unit tests.** The suite includes the original 17 cases plus 83 new cases.
 See [the complete coverage matrix](COVERAGE.md), [observed run summary](validation/2026-10-24-100.json),

@@ -63,3 +63,13 @@ a workaround across versions. Our computed-array-destructure negative fixture
 and helper-based positive example record one such easily misread restriction.
 Project style choices are recommendations; compiler-accepted examples only
 establish the checks listed in the validation report.
+
+## Package-resolution evidence
+
+[The modules section](https://github.com/bendlang/bend/blob/295e996574573e3a88827b1cf7045b437333c8f0/guide/GUIDE.md#modules),
+[resolver code](https://github.com/bendlang/bend/blob/295e996574573e3a88827b1cf7045b437333c8f0/bend2/bend.ts#L898),
+and [publish/link implementation](https://github.com/bendlang/bend/blob/295e996574573e3a88827b1cf7045b437333c8f0/bend2/main.ts#L650)
+ground the [package reference](packages.md). The [live hub guide](https://hub.bend-lang.com/guide)
+was read on 2026-10-24. Its package pages and the fresh-cache named-import probe
+could not supply dependency content in this environment. No external package
+source, license or content hash has therefore been verified or redistributed.

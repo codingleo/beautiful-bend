@@ -3,8 +3,8 @@ name: bend-best-practices
 description: >-
   Write, review, refactor, debug, and explain idiomatic Bend from bend-lang.com
   (Bend 2, bendlang/bend). Use for .bend files, affine quantities, structural
-  recursion, Base APIs, laws and proofs, IO, arrays, or parallel calls. Establish
-  the compiler and language generation before applying these rules; this is not
+  recursion, Base APIs, BendHub imports, laws and proofs, IO, arrays, or parallel
+  calls. Establish the compiler and language generation before applying these rules; this is not
   a guide to the older HigherOrderCO/HVM-based Bend.
 ---
 
@@ -51,6 +51,9 @@ This skill targets **Bend 2.0.39**, source revision
 - When composing Base APIs, inspect quantities as part of callback types. A
   reusable parameter may need an affine lambda adapter. Check imported names
   before introducing domain constructors; aliases do not prevent collisions.
+- Before using a BendHub dependency, inspect its source, license and proof
+  obligations; record its content hash and, when named, exact four-part version. If access
+  prevents this review, report the blocker and keep usage claims unverified.
 
 ## Load only what the task needs
 
@@ -59,6 +62,7 @@ This skill targets **Bend 2.0.39**, source revision
 | Types, quantities, matching, recursion, templates, anti-patterns | [Core idioms](references/core.md) |
 | Specifications, induction, proof failures, trust boundaries | [Laws and proofs](references/proofs.md) |
 | Callback quantities, names, numeric/text contracts, API composition | [Composition](references/composition.md) |
+| BendHub imports, pins, cache integrity, dependency laws and publication commands | [Packages](references/packages.md) |
 | Parsing, IO, resource ownership, array indexing | [Effects and arrays](references/effects-and-arrays.md) |
 | Fork/join, CPU vs GPU vs JS, performance review | [Parallelism](references/parallelism.md) |
 | Version disputes, evidence, upstream code and licenses | [Sources](references/sources.md) |

@@ -1,6 +1,6 @@
 {
   "name": "beautiful-bend",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Teach idiomatic Bend 2 with explicit ownership, structural recursion, laws, proofs, and checked examples.",
   "author": {
     "name": "Leonardo Ribeiro",

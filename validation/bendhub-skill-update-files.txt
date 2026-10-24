@@ -1,0 +1,4 @@
+skills/bend-best-practices/SKILL.md
+skills/bend-best-practices/references/examples.md
+skills/bend-best-practices/references/packages.md
+skills/bend-best-practices/references/sources.md

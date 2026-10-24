@@ -11,6 +11,10 @@ the original counter proof (p01), and original nine rejection cases (n01–n09).
 Thus 83 cases are new. Support modules, 15 fixed-law mutations, two additional proof-guard checks, harness
 unit tests and fresh-agent tasks are not counted toward 100.
 
+No verified BendHub package cases are included. The [package access record](validation/2026-10-24-bendhub.md)
+documents why the requested registry-backed extension remains blocked; source-backed guidance is available
+in the [package reference](skills/bend-best-practices/references/packages.md).
+
 Runtime outputs are exact assertions established from the stated oracle.
 Proof projects require both ordinary checker and no-main proof-gate acceptance;
 their 19 law declarations are SHA256-pinned. Every proof project also has a
