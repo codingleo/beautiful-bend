@@ -14,6 +14,7 @@ jobs:
           node-version: '24'
       - name: Check structure and runner integrity
         run: |
+          python3 scripts/coverage.py --check
           python3 scripts/validate.py --structure-only
           python3 -m unittest discover -s tests -v
       - name: Read source toolchain pin
@@ -41,5 +42,5 @@ jobs:
           wrapper.write_text('#!/bin/sh\nexport BEND_NO_TELEMETRY=1\nexec ' + shlex.join(args) + ' "$@"\n')
           wrapper.chmod(0o755)
           PY
-      - name: Check language fixtures and execute JavaScript
+      - name: Validate 100 cases and fixed-law mutations
         run: python3 scripts/validate.py --bend "$RUNNER_TEMP/bin/bend" --report .validation/results.json

@@ -11,10 +11,19 @@ Do not change a version string and assume compatibility. Distinguish language
 requirements from our style recommendations. Avoid unsupported performance or
 whole-program correctness claims.
 
-For examples, add an exact-output case to `tests/cases.json`. Cover relevant
+The current corpus has exactly 100 distinct cases, enforced by the runner. Keep
+`tests/cases.json` as its single source of truth; a future deliberate expansion
+must update counts, ID ranges, generated indexes and validation records together.
+Run `python3 scripts/coverage.py` after changing it. For examples, record an
+independent expected-output oracle before running the implementation. Cover relevant
 empty, malformed and boundary inputs. For a compiler restriction, add a minimal
 negative fixture with a diagnostic specific enough that an unrelated failure
-cannot pass. For a law, retain a test that an implementation mutation breaks it.
+cannot pass. For a law, write the specification before code, preserve its recorded
+SHA256, and retain a targeted mutation in `tests/proof-mutations.json`. A mutated
+implementation must still type-check by itself and fail the unchanged proof.
+State which properties the law leaves unspecified; do not treat a surviving
+mutation outside that scope as evidence of a stronger claim. Explain any intended
+contract change explicitly and review the law diff before updating its hash.
 Keep intentional bad code in `tests/negative/` or evaluation inputs, not as a
 copyable positive example. Preserve existing laws while fixing implementations.
 

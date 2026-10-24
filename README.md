@@ -5,7 +5,7 @@ idiomatic **Bend 2**: explicit ownership, structural recursion, useful types,
 pure computation, and laws backed by checked proofs.
 
 **Start with [the skill](skills/bend-best-practices/SKILL.md),
-[the examples](skills/bend-best-practices/references/examples.md), or
+[the 100-case matrix](COVERAGE.md), or
 [the validation record](VALIDATION.md).**
 
 This first version targets **Bend 2.0.39**, from the implementation linked by
@@ -16,7 +16,8 @@ another generation. The skill checks language identity before giving advice.
 
 ## Try it locally
 
-Use a checkout containing this patch. No plugin publication is required.
+Clone `https://github.com/codingleo/beautiful-bend.git`. The repository contains
+the complete skill; no package publication is required.
 
 **Codex:** copy the complete skill directory into your Bend project's
 `.agents/skills/` (keep its references, examples and license files together):
@@ -81,12 +82,33 @@ Example requests:
 
 ## What is included
 
-The concise entry point routes to six focused references: core idioms and
-anti-patterns, proofs, effects/arrays, parallelism, sources, and an example index.
-Seven runnable examples cover domain modelling, quantities/templates, parsing,
-IO, arrays, a parallel tree, and a counter with separate laws and proofs.
-Compiler rejection fixtures and proof mutations catch plausible wrong guidance.
-Five [evaluation tasks](evals/README.md) test assistant behavior separately.
+The entry point routes to focused references; complete examples stay outside the
+always-loaded instructions. **100 distinct cases** include the original 17 cases
+and 83 new ones:
+
+- **15 law/proof projects, 19 law declarations:** finite state invariants,
+  Nat/list/tree induction, roundtrips, equality transport and existential witnesses.
+  Each has a fixed specification, implementation, proof and targeted rejecting
+  mutation. The 13 mutated implementations must remain valid Bend programs.
+- **60 runtime programs:** typed domain models, callback quantities, checked
+  arithmetic, parsing/error policies, text/collections, array ownership, IO,
+  structural state machines and sequential references for parallel decomposition.
+- **25 expected rejections:** ownership, erasure, matching/termination, templates,
+  false/open proofs, and unsafe/foreign dependency guards.
+
+The [coverage matrix](COVERAGE.md) records every contract and independent oracle.
+Support files, 15 fixed-law mutations, two additional proof-integrity checks,
+validator unit tests and [agent evaluations](evals/README.md) are separate from
+the 100-case count. Tests execute locally in this cloud workspace and in CI.
+
+Laws drive the proof projects. For example,
+[batch length](skills/bend-best-practices/examples/suite/proofs/replicate_length/LAWS.bend)
+quantifies over every Nat count; its inductive proof shows that the produced list
+contains exactly that many units. A mutant that omits units remains well-typed
+but fails the unchanged law. Conversely, map length preservation does **not**
+prove payload correctness. Read the [contract limits](tests/findings/proof-mutations.md)
+before generalizing any claim. Ordinary checker acceptance is recorded; independent
+BendTT verification remains blocked in this environment.
 
 ```text
 .claude-plugin/                  local plugin and marketplace metadata
@@ -94,8 +116,8 @@ skills/bend-best-practices/      self-contained installable skill
   SKILL.md                      workflow and reference routing
   agents/openai.yaml            Codex display metadata
   references/                   focused guidance and provenance
-  examples/                     runnable Bend and a laws/proof project
-tests/                          expected outputs and rejection fixtures
+  examples/                     60 runtime programs and 15 law/proof projects
+tests/                          contracts, exact outputs, rejections, mutations, findings
 evals/                          model tasks, inputs, rubrics, recorded evidence
 scripts/validate.py             offline structure and compiler/runtime checks
 ```
@@ -103,21 +125,24 @@ scripts/validate.py             offline structure and compiler/runtime checks
 ## Validate and contribute
 
 ```sh
+python3 scripts/coverage.py --check
 python3 scripts/validate.py --structure-only
 python3 -m unittest discover -s tests -v
 python3 scripts/validate.py --bend /path/to/bend --report .validation/results.json
 ```
 
 Full mode requires Bend 2.0.39 and Node. It fails if either is absent or Bend's
-version is wrong; skips are explicit. `--native` additionally builds/runs the
-seven programs on the CPU (clang 14+). `--verdict` adds the kernel proof check
+version is wrong; skips are explicit. `--case p06` selects a case for development
+and labels the run as a subset. `--native` additionally builds/runs all 60
+programs on the CPU (clang 14+). `--verdict` adds all 15 kernel proof checks
 (Lean 4.34.0 or a matching `BENDTT`). Neither option tests a GPU. If Claude Code
 is installed, also run `claude plugin validate . --strict`.
 
 See [VALIDATION.md](VALIDATION.md) for the actual run and reproducible source
 toolchain setup, and [CONTRIBUTING.md](CONTRIBUTING.md) for change expectations.
 The included CI runs structure and source-pinned compiler/JS checks. It does not
-publish anything. CI has not yet run remotely for this patch.
+publish anything. [Actions](https://github.com/codingleo/beautiful-bend/actions)
+runs the same complete suite; the validation record identifies observed results.
 
 ## Provenance and license
 

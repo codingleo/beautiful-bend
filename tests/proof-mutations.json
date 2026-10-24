@@ -1,0 +1,139 @@
+{
+  "mutations": [
+    {
+      "id": "m01",
+      "proof_case": "p01",
+      "file": "skills/bend-best-practices/examples/laws/counter.bend",
+      "old": "      balance\n",
+      "new": "      1n+balance\n",
+      "diagnostic": "- expected : 1n+balance",
+      "purpose": "zero_steps must reject credit added when no steps were requested."
+    },
+    {
+      "id": "m02",
+      "proof_case": "p02",
+      "file": "skills/bend-best-practices/examples/suite/proofs/toggle/model.bend",
+      "old": "    case True{}:\n      False{}",
+      "new": "    case True{}:\n      True{}",
+      "diagnostic": "- expected : True{}",
+      "purpose": "involution must reject a toggle that gets stuck at True."
+    },
+    {
+      "id": "m03",
+      "proof_case": "p03",
+      "file": "skills/bend-best-practices/examples/suite/proofs/latch/model.bend",
+      "old": "    case False{}:\n      True{}",
+      "new": "    case False{}:\n      False{}",
+      "diagnostic": "- expected : False{}",
+      "purpose": "established must reject a latch setter that leaves False unchanged, even though identity remains idempotent."
+    },
+    {
+      "id": "m04",
+      "proof_case": "p04",
+      "file": "skills/bend-best-practices/examples/suite/proofs/traffic_cycle/model.bend",
+      "old": "    case Amber{}:\n      Red{}",
+      "new": "    case Amber{}:\n      Green{}",
+      "diagnostic": "- expected : Model.Green{}",
+      "purpose": "cycle must reject a broken Amber transition that prevents three steps restoring Red."
+    },
+    {
+      "id": "m05",
+      "proof_case": "p05",
+      "file": "skills/bend-best-practices/examples/suite/proofs/addition_associativity/model.bend",
+      "old": "      1n+add(rest, b)",
+      "new": "      2n+add(rest, b)",
+      "diagnostic": "- expected : {4n+Model.add(Model.add(rest, b), c) == 2n+Model.add(rest, Model.add(b, c)) : Nat}",
+      "purpose": "associative must reject doubling the first operand while leaving the second unchanged."
+    },
+    {
+      "id": "m06",
+      "proof_case": "p06",
+      "file": "skills/bend-best-practices/examples/suite/proofs/replicate_length/model.bend",
+      "old": "      Unit{} <> batch(rest)",
+      "new": "      batch(rest)",
+      "diagnostic": "- expected : {List.length(&2, Unit, Model.batch(rest)) == 1n+rest : Nat}",
+      "purpose": "exact_length must reject omitting one emitted unit per successor step."
+    },
+    {
+      "id": "m07",
+      "proof_case": "p07",
+      "file": "skills/bend-best-practices/examples/suite/proofs/append_identity/model.bend",
+      "old": "      h <> append(t, ys)",
+      "new": "      0n <> append(t, ys)",
+      "diagnostic": "- expected : {0n <> Model.append(t, []) == h <> t : List<&2, Nat>}",
+      "purpose": "right_identity must reject replacing original list heads with zero while appending an empty suffix."
+    },
+    {
+      "id": "m08",
+      "proof_case": "p08",
+      "file": "skills/bend-best-practices/examples/suite/proofs/append_length/model.bend",
+      "old": "    case Nil{}:\n      ys",
+      "new": "    case Nil{}:\n      Nil{}",
+      "diagnostic": "- expected : 0n",
+      "purpose": "length_sum must reject discarding the suffix when the prefix becomes empty."
+    },
+    {
+      "id": "m09",
+      "proof_case": "p09",
+      "file": "skills/bend-best-practices/examples/suite/proofs/map_length/model.bend",
+      "old": "      (1n+h) <> increment_all(t)",
+      "new": "      increment_all(t)",
+      "diagnostic": "- expected : {List.length(&2, Nat, Model.increment_all(t)) == 1n+List.length(&2, Nat, t) : Nat}",
+      "purpose": "length_preserved must reject a mapping operation that silently drops each element."
+    },
+    {
+      "id": "m10",
+      "proof_case": "p10",
+      "file": "skills/bend-best-practices/examples/suite/proofs/optional_roundtrip/model.bend",
+      "old": "    case Found{n}:\n      Some{n}",
+      "new": "    case Found{n}:\n      Some{1n+n}",
+      "diagnostic": "- expected : Some{1n+n}",
+      "purpose": "roundtrip must reject payload corruption during decoding."
+    },
+    {
+      "id": "m11",
+      "proof_case": "p11",
+      "file": "skills/bend-best-practices/examples/suite/proofs/clamp_one/model.bend",
+      "old": "    case 1n+rest:\n      1n",
+      "new": "    case 1n+rest:\n      rest",
+      "diagnostic": "- expected : Model.clamp(rest)",
+      "purpose": "idempotent must reject predecessor instead of saturation: applying it twice need not equal applying it once."
+    },
+    {
+      "id": "m12",
+      "proof_case": "p12",
+      "file": "skills/bend-best-practices/examples/suite/proofs/workflow_reset/model.bend",
+      "old": "    case Running{}:\n      Idle{}",
+      "new": "    case Running{}:\n      Running{}",
+      "diagnostic": "- expected : Model.Running{}",
+      "purpose": "reset_after_step must reject leaving a running workflow active after reset."
+    },
+    {
+      "id": "m13",
+      "proof_case": "p13",
+      "file": "skills/bend-best-practices/examples/suite/proofs/equality_transport/PROOF.bend",
+      "old": "  Equal.cong(Nat, Nat, Model.ticket, a, b, same)",
+      "new": "  Equal.sym(Nat, a, b, same)",
+      "diagnostic": "- expected : {1n+a == 1n+b : Nat}",
+      "purpose": "ticket_congruence requires transporting equality through ticket; reversing the input equality alone proves a different proposition."
+    },
+    {
+      "id": "m14",
+      "proof_case": "p14",
+      "file": "skills/bend-best-practices/examples/suite/proofs/tree_mirror/model.bend",
+      "old": "    case Leaf{value}:\n      Leaf{value}",
+      "new": "    case Leaf{value}:\n      Leaf{1n+value}",
+      "diagnostic": "- expected : Model.Leaf{2n+value}",
+      "purpose": "involution must reject mirror changing leaf payloads on each pass."
+    },
+    {
+      "id": "m15",
+      "proof_case": "p15",
+      "file": "skills/bend-best-practices/examples/suite/proofs/predecessor_witness/PROOF.bend",
+      "old": "  (1n+n, {==})",
+      "new": "  (0n, {==})",
+      "diagnostic": "- expected : 0n",
+      "purpose": "successor_exists must reject a fixed zero witness because its predecessor cannot recover arbitrary n."
+    }
+  ]
+}

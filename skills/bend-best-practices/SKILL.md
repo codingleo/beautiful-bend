@@ -27,6 +27,9 @@ This skill targets **Bend 2.0.39**, source revision
 
 ## Work in small checked steps
 
+- Start from the invariant: state what must hold and over which inputs. For new
+  proof-bearing code, write `LAWS.bend` before the implementation and proof.
+  Check whether a useless implementation could satisfy the proposed laws.
 - Read existing laws before changing behavior. Keep `LAWS.bend` fixed unless the
   user explicitly requests a specification change. Fix code or proofs instead
   of weakening claims, adding assumptions, holes, or `@unsafe` to pass a check.
@@ -45,6 +48,9 @@ This skill targets **Bend 2.0.39**, source revision
   runtime equality; `{a == b : T}` states a proposition.
 - Preserve behavior during a refactor, including failures, numeric bounds and
   resource ownership. State any intentional signature or behavior change.
+- When composing Base APIs, inspect quantities as part of callback types. A
+  reusable parameter may need an affine lambda adapter. Check imported names
+  before introducing domain constructors; aliases do not prevent collisions.
 
 ## Load only what the task needs
 
@@ -52,6 +58,7 @@ This skill targets **Bend 2.0.39**, source revision
 |---|---|
 | Types, quantities, matching, recursion, templates, anti-patterns | [Core idioms](references/core.md) |
 | Specifications, induction, proof failures, trust boundaries | [Laws and proofs](references/proofs.md) |
+| Callback quantities, names, numeric/text contracts, API composition | [Composition](references/composition.md) |
 | Parsing, IO, resource ownership, array indexing | [Effects and arrays](references/effects-and-arrays.md) |
 | Fork/join, CPU vs GPU vs JS, performance review | [Parallelism](references/parallelism.md) |
 | Version disputes, evidence, upstream code and licenses | [Sources](references/sources.md) |
@@ -66,10 +73,15 @@ This skill targets **Bend 2.0.39**, source revision
    `LAWS.bend` and has no `main` that substitutes a program run for the verdict.
    Run `bend PROOF.bend --verdict` when the pinned BendTT/Lean toolchain is
    available. Report a skipped or failed kernel check distinctly.
+   On a temporary copy, introduce a relevant implementation defect and confirm
+   the unchanged laws reject it. A surviving mutation exposes the contract's
+   limits; do not hide it or claim a property the law does not state.
 3. Exercise success, empty, malformed and relevant boundary inputs. Compile and
    run on the intended backend: `bend app.bend -o app` for native, or
    `bend app.bend -o app.js` followed by `node app.js` for JS. JS does not validate
    CPU parallelism or GPU execution. Do not invent `bend test`, `fmt` or `lint`.
+   Some F32 primitives remain symbolic during normalization in this pin;
+   concrete output assertions need a compiled backend.
 4. Report the exact toolchain, commands and results. Separate checker acceptance,
    runtime tests, kernel verification and style recommendations. Never infer a
    speedup or whole-program correctness from a passing fixture or a written law.

@@ -1,5 +1,8 @@
 # Core idioms
 
+- [Domain](#model-the-domain-then-consume-it) · [Quantities](#make-quantities-visible)
+- [Matching](#let-the-match-expose-progress) · [Arithmetic](#spell-arithmetic-and-failure-precisely) · [Anti-patterns](#common-wrong-turns)
+
 Scope: Bend 2.0.39. Language facts below come from the pinned [guide and
 implementation](sources.md). Naming and decomposition advice are project
 recommendations. Complete [examples](examples.md) are compiler-tested; fragments
@@ -56,6 +59,8 @@ decisions into a small helper that receives the decision as a parameter.
 The same limitation applies to destructuring a computed pair with `=`; see
 [arrays.bend](../examples/arrays.bend). A function that handles two domains can
 often use `match a b:` with one case table instead of tangled nested logic.
+Skipping an earlier parameter is allowed if it is not subsequently matched;
+matching it after a later parameter is the rejected ordering.
 
 Use `match` on `True{}`/`False{}`; this version has no `if` syntax. Ordinary
 functions return their last expression. `return` belongs to `do` notation.
@@ -98,3 +103,5 @@ Base; do not promise that one parser accepts another language's number grammar.
 
 The repository's `tests/negative/` pins compiler refusals separately from style
 advice. Read [sources](sources.md) when a newer compiler disagrees.
+See [composition](composition.md) for callback adapters, imported-name collisions,
+and numeric/text boundaries found while exercising the complete examples.
