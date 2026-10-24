@@ -1,0 +1,2341 @@
+{
+  "status": "passed",
+  "started_utc": "2026-10-24T22:32:44.669152+00:00",
+  "scope": "full-100",
+  "expected_toolchain": {
+    "bend_version": "2.0.39",
+    "bend_repository": "https://github.com/bendlang/bend.git",
+    "bend_commit": "295e996574573e3a88827b1cf7045b437333c8f0",
+    "bun_version": "1.4.4",
+    "node_major": 24,
+    "lean_version_for_verdict": "4.34.0"
+  },
+  "command_count": 320,
+  "case_counts": {
+    "run": {
+      "passed": 60
+    },
+    "proof": {
+      "passed": 15
+    },
+    "reject": {
+      "passed": 25
+    }
+  },
+  "skipped": [
+    "BendTT kernel (--verdict not requested)",
+    "Native CPU compilation/execution (--native not requested)",
+    "GPU execution, parallel scheduling and performance measurement"
+  ],
+  "cases": [
+    {
+      "id": "p01",
+      "kind": "proof",
+      "file": "skills/bend-best-practices/examples/laws/PROOF.bend",
+      "sha256": "ddd281ef9f2694167b04af004dcfe993ef495eabf5b19a74bd433d7df314beca",
+      "status": "passed"
+    },
+    {
+      "id": "p02",
+      "kind": "proof",
+      "file": "skills/bend-best-practices/examples/suite/proofs/toggle/PROOF.bend",
+      "sha256": "3356849799d0eb5516d2109af3fd4b6961158154819d20943cec5035bbc84544",
+      "status": "passed"
+    },
+    {
+      "id": "p03",
+      "kind": "proof",
+      "file": "skills/bend-best-practices/examples/suite/proofs/latch/PROOF.bend",
+      "sha256": "b87a66038e503ab13dabadf00540e481a37a1405b68153d6f278cc66b941ae71",
+      "status": "passed"
+    },
+    {
+      "id": "p04",
+      "kind": "proof",
+      "file": "skills/bend-best-practices/examples/suite/proofs/traffic_cycle/PROOF.bend",
+      "sha256": "a9884a9480f1ea8990af40cdb93f1198effc8607d7dd4f2cb42370a4e6ba0158",
+      "status": "passed"
+    },
+    {
+      "id": "p05",
+      "kind": "proof",
+      "file": "skills/bend-best-practices/examples/suite/proofs/addition_associativity/PROOF.bend",
+      "sha256": "42d10c520771d614f576346ba425928a600db0168c4a268e53a1842417f6261c",
+      "status": "passed"
+    },
+    {
+      "id": "p06",
+      "kind": "proof",
+      "file": "skills/bend-best-practices/examples/suite/proofs/replicate_length/PROOF.bend",
+      "sha256": "e8cac7aa3e5504b61882935ad1a6525b9447f98a3f49c7feb8cb179078d6cbd4",
+      "status": "passed"
+    },
+    {
+      "id": "p07",
+      "kind": "proof",
+      "file": "skills/bend-best-practices/examples/suite/proofs/append_identity/PROOF.bend",
+      "sha256": "659043f94ba7e61e10de83842b9818e3054ab7e0956c89e7a8fa6974b883e156",
+      "status": "passed"
+    },
+    {
+      "id": "p08",
+      "kind": "proof",
+      "file": "skills/bend-best-practices/examples/suite/proofs/append_length/PROOF.bend",
+      "sha256": "e8f5a042b5d2c7fe5067eeab076cff01a4de397176b0fcf1f7cd180a44927f34",
+      "status": "passed"
+    },
+    {
+      "id": "p09",
+      "kind": "proof",
+      "file": "skills/bend-best-practices/examples/suite/proofs/map_length/PROOF.bend",
+      "sha256": "d5f4e180197af8dd5f9f8bfcf79e5913a19fa0958b1edd800d35796de269ca05",
+      "status": "passed"
+    },
+    {
+      "id": "p10",
+      "kind": "proof",
+      "file": "skills/bend-best-practices/examples/suite/proofs/optional_roundtrip/PROOF.bend",
+      "sha256": "058f1b47387f0b8b91982287b7817632d4bb5869bb146a4bb82339501f61c363",
+      "status": "passed"
+    },
+    {
+      "id": "p11",
+      "kind": "proof",
+      "file": "skills/bend-best-practices/examples/suite/proofs/clamp_one/PROOF.bend",
+      "sha256": "d4cc8f80e4b0264205e0862fa5bbbe0496454934724a5784e1377a4ebe31b00a",
+      "status": "passed"
+    },
+    {
+      "id": "p12",
+      "kind": "proof",
+      "file": "skills/bend-best-practices/examples/suite/proofs/workflow_reset/PROOF.bend",
+      "sha256": "b0ad49a1e745acd6c836beac2718ae00915e447bc5381ec5d7372a352c5e760c",
+      "status": "passed"
+    },
+    {
+      "id": "p13",
+      "kind": "proof",
+      "file": "skills/bend-best-practices/examples/suite/proofs/equality_transport/PROOF.bend",
+      "sha256": "b282389bc8ed5cd216c5127d4754f70b519865b49755cd54b84b37b649f11aa9",
+      "status": "passed"
+    },
+    {
+      "id": "p14",
+      "kind": "proof",
+      "file": "skills/bend-best-practices/examples/suite/proofs/tree_mirror/PROOF.bend",
+      "sha256": "14e1a99305bc883f7c43b5a3024e1f4e878725dabfb898ff338ef474013c010e",
+      "status": "passed"
+    },
+    {
+      "id": "p15",
+      "kind": "proof",
+      "file": "skills/bend-best-practices/examples/suite/proofs/predecessor_witness/PROOF.bend",
+      "sha256": "b5f279afcc35891a6dfa556305404e4a91bd4ecd2546c47b80a1900c0fd7fc6d",
+      "status": "passed"
+    },
+    {
+      "id": "r01",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/invoice.bend",
+      "sha256": "0263277f4194c8ffb5a666e333b78672364cbeaf9c7d01bc5049a90af8580b70",
+      "status": "passed"
+    },
+    {
+      "id": "r02",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/quantities.bend",
+      "sha256": "03ebdcf0bae87b1fba88ca94ee458e68ce274b5035aa30c5efd0318fd204d5fe",
+      "status": "passed"
+    },
+    {
+      "id": "r03",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/laws/main.bend",
+      "sha256": "6a56b632f65688a5733d320ab3bd0b275fd17c8f36d3f9856d94b022c73a53fe",
+      "status": "passed"
+    },
+    {
+      "id": "r04",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/core/shipment.bend",
+      "sha256": "203d61cd75988e58ef1d28904f0b715a10e32af05eb62678e98b441a07e16ce6",
+      "status": "passed"
+    },
+    {
+      "id": "r05",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/core/gate_transitions.bend",
+      "sha256": "9b50372a6c531d617cd7eba4220ba50987a3e679728fd4e6c485b5523a2457ce",
+      "status": "passed"
+    },
+    {
+      "id": "r06",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/core/compound_growth.bend",
+      "sha256": "814d6e7ff21ed3bbabf35754bd2dfd3c4b0dddfa9e157d281cfb3a50f7422ca2",
+      "status": "passed"
+    },
+    {
+      "id": "r07",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/core/expression_eval.bend",
+      "sha256": "8a146decdc1c490f7a9c71712fb3ffee98f4daf6627b20698002e03c966dd745",
+      "status": "passed"
+    },
+    {
+      "id": "r08",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/core/stock_boundaries.bend",
+      "sha256": "4e4688096f77caf92075639bc949c1a281cf37a1a20fb2d9575db4e874b22266",
+      "status": "passed"
+    },
+    {
+      "id": "r09",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/core/checked_add.bend",
+      "sha256": "9f3dd15116278525a1f8f58b2c93b9348334e03662424a7e82cd664dd566da67",
+      "status": "passed"
+    },
+    {
+      "id": "r10",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/core/checked_multiply.bend",
+      "sha256": "f74e7a4fc439bcc4f808861d520a95a935ea8700b0b32296a27b15cf8a7492d1",
+      "status": "passed"
+    },
+    {
+      "id": "r11",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/core/erased_generic_swap.bend",
+      "sha256": "da9c3c0ac4d7a7992c2f347c6348bbb940729ce7c7c0c4e92644f9f1e4a8f5ff",
+      "status": "passed"
+    },
+    {
+      "id": "r12",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/core/erased_data_snapshot.bend",
+      "sha256": "d84d587c285ba3983533273a087ba0238550cb5dae50fcb424b071f8d6ef2ffd",
+      "status": "passed"
+    },
+    {
+      "id": "r13",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/core/closed_templates.bend",
+      "sha256": "e2b5375bfe5ebfab2ac4497f738b70eabe9ff6b5d1ea302240c78f969b860036",
+      "status": "passed"
+    },
+    {
+      "id": "r14",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/core/captured_composition.bend",
+      "sha256": "0d0ceebb06991d60b3d56b4bae87a4acd34cd0a633465c8a8e97717b60f83ff2",
+      "status": "passed"
+    },
+    {
+      "id": "r15",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/core/runtime_repeated_offset.bend",
+      "sha256": "b4be868eea0819456c0f1cd949c4cb04a35a5e0198d776b2cb8410aa05c53df6",
+      "status": "passed"
+    },
+    {
+      "id": "r16",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/core/quarter_units.bend",
+      "sha256": "95be57509a53fed06d2dc529a1b7cb4cf0763354894969e47bf9360dcb70516a",
+      "status": "passed"
+    },
+    {
+      "id": "r17",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/core/sensor_clamp.bend",
+      "sha256": "7b2a3c4e6da37f4295573a348278641d7a8a11c774926714955a70924512db7d",
+      "status": "passed"
+    },
+    {
+      "id": "r18",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/core/lexicographic_grid.bend",
+      "sha256": "36130911f1b85813a8f6ea52c1e3856e9e4eeb3a08036755056f3956e40c4f87",
+      "status": "passed"
+    },
+    {
+      "id": "r19",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/core/selective_fields.bend",
+      "sha256": "c2f05d731b56b993318d1f1810a1d36d2a17284a6e1196c9dc13b4dac92f06ec",
+      "status": "passed"
+    },
+    {
+      "id": "r20",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/core/affine_policy.bend",
+      "sha256": "7362fc97df9671915c39610041872e28a8aaca24fe7e8607459ca9dd174d9c4a",
+      "status": "passed"
+    },
+    {
+      "id": "r21",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/parsing.bend",
+      "sha256": "a1061ca1a0ddbae647d4c3b314060bd195f70fcfc7dff9838d10246addff02d8",
+      "status": "passed"
+    },
+    {
+      "id": "r22",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/collections/energy_total.bend",
+      "sha256": "5b64460bbec881db76b5bf57ba8d003a46fb5d9fd0f52e5ed9df1a43c227126b",
+      "status": "passed"
+    },
+    {
+      "id": "r23",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/collections/ranked_scores.bend",
+      "sha256": "ac0c7a61b52fc411a74edef776c5e712f276266453713b4cae7f01ab3f67f6ff",
+      "status": "passed"
+    },
+    {
+      "id": "r24",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/collections/paired_cost.bend",
+      "sha256": "7e07f00314e7bb81d18ecfaeadbb895199a21f655c4400bac325a300a08a9175",
+      "status": "passed"
+    },
+    {
+      "id": "r25",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/collections/page_window.bend",
+      "sha256": "b975bcc62c862c9114959c27a7eb9e0d0b2743cdf43b572d1317a66d3c5b81d6",
+      "status": "passed"
+    },
+    {
+      "id": "r26",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/collections/first_available.bend",
+      "sha256": "4b28a48795503e151c60a29d996c2f00c6a90843e174617bca388e65c255610b",
+      "status": "passed"
+    },
+    {
+      "id": "r27",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/collections/batch_health.bend",
+      "sha256": "b0bb8db8927cb677de40686961adaddc1403583d7d1a5a07af9977a336975696",
+      "status": "passed"
+    },
+    {
+      "id": "r28",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/collections/fold_order.bend",
+      "sha256": "bb8179462455138ec882a4d3cd0a7a096c1f893facc4b0b7ae21f03b00118dfc",
+      "status": "passed"
+    },
+    {
+      "id": "r29",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/collections/clean_labels.bend",
+      "sha256": "558cea7f51003a0692a51ce8c4ac6549e169fb4844aceca62c144553a4273671",
+      "status": "passed"
+    },
+    {
+      "id": "r30",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/collections/unicode_window.bend",
+      "sha256": "d0e4e34eb5f8f0cddf2cdeae3cb6e5538691a7039a77e0b92821812117822861",
+      "status": "passed"
+    },
+    {
+      "id": "r31",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/collections/record_shape.bend",
+      "sha256": "df4271c4a9e3eca63b588f4469f6325577789772d489f30e8acddee032f23369",
+      "status": "passed"
+    },
+    {
+      "id": "r32",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/collections/decimal_grammar.bend",
+      "sha256": "80ad8408afb35beed47b40a50beadc13ebb313a5d3c4eca7a761cbde245820b0",
+      "status": "passed"
+    },
+    {
+      "id": "r33",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/collections/service_port.bend",
+      "sha256": "ff3d3a751a1cfa0d960bbb2d637b75fcd23c89956a12a2d2b68593540e8a774e",
+      "status": "passed"
+    },
+    {
+      "id": "r34",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/collections/safe_ratio.bend",
+      "sha256": "8d55ed97ad38149808f6979476d4831ef0a3d3fd7fcc46f65557cdc7a54fa3f0",
+      "status": "passed"
+    },
+    {
+      "id": "r35",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/collections/optional_timeout.bend",
+      "sha256": "e7785f4855a25e60c912dcb98a73c3262a759178a8689e57e3a0588fd7cc27db",
+      "status": "passed"
+    },
+    {
+      "id": "r36",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/collections/validated_sum.bend",
+      "sha256": "d051abfdfa50e8ce005cd4529d7d381f7423696f549ba48f55aa041938cf3299",
+      "status": "passed"
+    },
+    {
+      "id": "r37",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/collections/recover_rows.bend",
+      "sha256": "16ac04c7e60a08d1ea32adc90ffcd054b7983cfd54f87ab5a35c4ff90342ad10",
+      "status": "passed"
+    },
+    {
+      "id": "r38",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/collections/word_counts.bend",
+      "sha256": "4bbd03bd48a568fcf0b3390838cb949036086f64f6e2dcf7922f729e053b3902",
+      "status": "passed"
+    },
+    {
+      "id": "r39",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/collections/config_overlay.bend",
+      "sha256": "626b2a33c25ace380916f3d347116b795f54148e6e3ba6ae74cf3f9a1485c83e",
+      "status": "passed"
+    },
+    {
+      "id": "r40",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/collections/canonical_tags.bend",
+      "sha256": "8d671059d22b29f19de20db3a9aee8ba65579b9ff2bc664e72fb7bbdf04e4a99",
+      "status": "passed"
+    },
+    {
+      "id": "r41",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/arrays.bend",
+      "sha256": "69f1d49690bd694681f7d4b1511a17cd5de5de0a342ba01426a75b255daaedca",
+      "status": "passed"
+    },
+    {
+      "id": "r42",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/effects.bend",
+      "sha256": "29b5580a71cfeffe08811e80b03dc1b1a6bca4544f8e39c63f65ed74d959d3ec",
+      "status": "passed"
+    },
+    {
+      "id": "r43",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/parallel_tree.bend",
+      "sha256": "e94905e792f5879023195c95f8d873b59def26466cc62d3a8d77527f3b382f5a",
+      "status": "passed"
+    },
+    {
+      "id": "r44",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/systems/capacity.bend",
+      "sha256": "7b214eda081c6352b24cd35d315a397c8a827413909875a2ee76bba36d58d023",
+      "status": "passed"
+    },
+    {
+      "id": "r45",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/systems/string_slots.bend",
+      "sha256": "89ce1cd0f3897021e643c68ca29cb33ea1634785fbeda1dc809cb9e01cc6db39",
+      "status": "passed"
+    },
+    {
+      "id": "r46",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/systems/swap_slot.bend",
+      "sha256": "2fee63c0338adfd6c2320db05cbaedcc3629e7d4be3d978576d471bc5fe0f467",
+      "status": "passed"
+    },
+    {
+      "id": "r47",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/systems/clone_independence.bend",
+      "sha256": "7cd422a055f06a69eaa6f709370027248982172cb06f9a50195d04277591d9d7",
+      "status": "passed"
+    },
+    {
+      "id": "r48",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/systems/map_threshold.bend",
+      "sha256": "f7e9bca3523c3d6bd090132b937a79a731deb6b7ef8de74c7cd36f749ec94942",
+      "status": "passed"
+    },
+    {
+      "id": "r49",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/systems/array_inventory.bend",
+      "sha256": "6ee7960ef49bdcd4a365184e0bd11c0e5125ed9f4e366e86a42fe022d4f8e913",
+      "status": "passed"
+    },
+    {
+      "id": "r50",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/systems/checked_index.bend",
+      "sha256": "4075b85d0be9024cdf251f4d1bb939567656b828a6d3746405f5916b563bfa7a",
+      "status": "passed"
+    },
+    {
+      "id": "r51",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/systems/balanced_checksum.bend",
+      "sha256": "a211f6968c40a165b05ed8836e23d1278c28c7cefa8d6e0eed889b5d4c6d3648",
+      "status": "passed"
+    },
+    {
+      "id": "r52",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/systems/skewed_statistics.bend",
+      "sha256": "6892db39e5bc17ba204e417a441319e9e44965ab6ada0281df5b659523a41ad6",
+      "status": "passed"
+    },
+    {
+      "id": "r53",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/systems/empty_workload.bend",
+      "sha256": "22fbaf0fd2e122cb51e5a2cd4931bbca14ae5cd26b5908119c6cce52da36b608",
+      "status": "passed"
+    },
+    {
+      "id": "r54",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/systems/independent_dependent.bend",
+      "sha256": "b389e3c5b318c77f1f4004fa16d70f9151b1b3b53dab6d603b0353e27d002f8a",
+      "status": "passed"
+    },
+    {
+      "id": "r55",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/systems/io_sequence.bend",
+      "sha256": "e8b7f3ae271435bf823f10fb2c1d3ce0526f42f45855650e75008b2b5c8d2c2f",
+      "status": "passed"
+    },
+    {
+      "id": "r56",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/systems/io_pure_bind.bend",
+      "sha256": "d29f6d7e3fd357100eac86867f383aa32d73272370493611705689dda08d244e",
+      "status": "passed"
+    },
+    {
+      "id": "r57",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/systems/io_independent.bend",
+      "sha256": "6f33e18400fcd2e97bc3418657806a1093c620456a8ea5f143a70f653d4638dd",
+      "status": "passed"
+    },
+    {
+      "id": "r58",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/systems/io_dependent.bend",
+      "sha256": "236c89fe2be84a593d99ac6fbca654539e37a0a5e21e4b1a3c319958a600d959",
+      "status": "passed"
+    },
+    {
+      "id": "r59",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/systems/fuel_machine.bend",
+      "sha256": "2315d0740a68100ac492289472f062ebda69392fd6a295128bd8010e5b97fefe",
+      "status": "passed"
+    },
+    {
+      "id": "r60",
+      "kind": "run",
+      "file": "skills/bend-best-practices/examples/suite/systems/state_transitions.bend",
+      "sha256": "2e776a537ce95b33c5c2daf2845697e6bb50c674311f4c109fc9d92dfef35f4d",
+      "status": "passed"
+    },
+    {
+      "id": "n01",
+      "kind": "reject",
+      "file": "tests/negative/accumulator_first.bend",
+      "sha256": "389dc31c5692806bfa6c3426dd7bfdefd63d5f982a2722a75cf3311c309aebff",
+      "status": "passed"
+    },
+    {
+      "id": "n02",
+      "kind": "reject",
+      "file": "tests/negative/computed_match.bend",
+      "sha256": "333e2afbfeb060f3d250d9d223d9c5fae79056f9ce69e5c5ebab1f771d050474",
+      "status": "passed"
+    },
+    {
+      "id": "n03",
+      "kind": "reject",
+      "file": "tests/negative/computed_destructure.bend",
+      "sha256": "057e6528391eb228c9b7ece184e4abdd9872e541d2a0dda185a8f3f5d72ecc25",
+      "status": "passed"
+    },
+    {
+      "id": "n04",
+      "kind": "reject",
+      "file": "tests/negative/copied_array.bend",
+      "sha256": "4a32635d959217c0b0656ea3b8766591f560cd3f591fc689c47f3616eba90fde",
+      "status": "passed"
+    },
+    {
+      "id": "n05",
+      "kind": "reject",
+      "file": "tests/negative/false_proof.bend",
+      "sha256": "59e60fefc74c61dddda5ddcbafdb5dd1dfb91b5c6b81f1d54ccea00b097f73bf",
+      "status": "passed"
+    },
+    {
+      "id": "n06",
+      "kind": "reject",
+      "file": "tests/negative/reused_closure.bend",
+      "sha256": "ed186d8313c7a5e16ae6d456aa99cafd0a6b2990821b8fb5c169e662a611feb0",
+      "status": "passed"
+    },
+    {
+      "id": "n07",
+      "kind": "reject",
+      "file": "tests/negative/unsafe_escape.bend",
+      "sha256": "a6904b080c9b236ff09ffd1a67bfb69e897e2465495f633a2d8266cad42b99f2",
+      "status": "passed"
+    },
+    {
+      "id": "n08",
+      "kind": "reject",
+      "file": "tests/negative/untyped_operator.bend",
+      "sha256": "2f3ed60c4242a841f765fe852da064ac25b4fc9011389481173ecfa4dbe8e71f",
+      "status": "passed"
+    },
+    {
+      "id": "n09",
+      "kind": "reject",
+      "file": "skills/bend-best-practices/examples/laws/LAWS.bend",
+      "sha256": "9f1702974895bc92985fd1d75154f08e72a14fa5e8b9a0fca5657ffc49638804",
+      "status": "passed"
+    },
+    {
+      "id": "n10",
+      "kind": "reject",
+      "file": "tests/negative/suite/erased_runtime.bend",
+      "sha256": "6dccfcf03f9ccbf438e81485460ad6a91a2884c9629ec9dbab7de776aaa8b251",
+      "status": "passed"
+    },
+    {
+      "id": "n11",
+      "kind": "reject",
+      "file": "tests/negative/suite/data_closure_field.bend",
+      "sha256": "0f0fa1981a49b2cf6c9e52862f52feb8cb00b588bb757c136bfb296ea157d1b0",
+      "status": "passed"
+    },
+    {
+      "id": "n12",
+      "kind": "reject",
+      "file": "tests/negative/suite/nonexhaustive.bend",
+      "sha256": "6a4f3e79ac605486a9ae4391aad40b65e62a2240daaf2224b8a38edb56ff58c2",
+      "status": "passed"
+    },
+    {
+      "id": "n13",
+      "kind": "reject",
+      "file": "tests/negative/suite/match_binder_order.bend",
+      "sha256": "40b34f4b4ef105b4d444e7cff4417bc2539535077a7374edb85e4464c2cfabdd",
+      "status": "passed"
+    },
+    {
+      "id": "n14",
+      "kind": "reject",
+      "file": "tests/negative/suite/local_match.bend",
+      "sha256": "c1fce221688e93f5b2a7853f6519b2b67b1393b8a93af5377a72e8c6dfd38079",
+      "status": "passed"
+    },
+    {
+      "id": "n15",
+      "kind": "reject",
+      "file": "tests/negative/suite/template_capture.bend",
+      "sha256": "fa44ad3362e00b91c2f4f6a267734a6f2307a9e379b3d4638bb46abb87877081",
+      "status": "passed"
+    },
+    {
+      "id": "n16",
+      "kind": "reject",
+      "file": "tests/negative/suite/template_order.bend",
+      "sha256": "3d07044e2055262f84147b2f3b51d9a03d3d045e4cf2b58a51c559dd7dc18b56",
+      "status": "passed"
+    },
+    {
+      "id": "n17",
+      "kind": "reject",
+      "file": "tests/negative/suite/forward_reference.bend",
+      "sha256": "06bf172e18da8a9e020ef17369d8265b0ae33fc9ff1fec2bae688435e9adc0cf",
+      "status": "passed"
+    },
+    {
+      "id": "n18",
+      "kind": "reject",
+      "file": "tests/negative/suite/mutual_recursion.bend",
+      "sha256": "726f3187b27b90815b6b8200605b10c9ce6fd1cd46f1ddb5f7ce3e3eb6b7fd1a",
+      "status": "passed"
+    },
+    {
+      "id": "n19",
+      "kind": "reject",
+      "file": "tests/negative/suite/unchanged_recursion.bend",
+      "sha256": "855f04049121cfeb0b52e9e372e1c972ad86728c63a4f766675f2ca478e755fc",
+      "status": "passed"
+    },
+    {
+      "id": "n20",
+      "kind": "reject",
+      "file": "tests/negative/suite/proof_hole.bend",
+      "sha256": "b81065d41cc915910368b184c431f0ef920d4d029c5762ece158773fa9a64d84",
+      "status": "passed"
+    },
+    {
+      "id": "n21",
+      "kind": "reject",
+      "file": "tests/negative/suite/false_induction.bend",
+      "sha256": "ab1bbb2c6dd32ba7c083df19b6b506e624868294d1098f849c3d44c186f7cc19",
+      "status": "passed"
+    },
+    {
+      "id": "n22",
+      "kind": "reject",
+      "file": "tests/negative/suite/foreign_dependency.bend",
+      "sha256": "67baa327ad56ca128ee8985dbca7097cb2abcc9c706ca082d4e0a1a68dec298e",
+      "status": "passed"
+    },
+    {
+      "id": "n23",
+      "kind": "reject",
+      "file": "tests/negative/suite/laws_import_guard/PROOF.bend",
+      "sha256": "77617da6c9ef0043e0e92bd54021281ef2b05bdcdde25dc36289fa4ca62bce6d",
+      "status": "passed"
+    },
+    {
+      "id": "n24",
+      "kind": "reject",
+      "file": "tests/negative/suite/duplicate_template_binder.bend",
+      "sha256": "6fe0ab4da4c99db1a34b157792f9d6bdf7bcb72e855645dfa8ca39007e50b06b",
+      "status": "passed"
+    },
+    {
+      "id": "n25",
+      "kind": "reject",
+      "file": "tests/negative/suite/erased_field_runtime.bend",
+      "sha256": "dc6444653701e5c6673d83973fc6aff07819d5e9aeb22610519a79dfcb0efe70",
+      "status": "passed"
+    }
+  ],
+  "check_outcomes": {
+    "passed": 320
+  },
+  "commands": [
+    {
+      "name": "Bend version",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "Node version",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p01 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p01 proof gate",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p02 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p02 proof gate",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p03 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p03 proof gate",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p04 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p04 proof gate",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p05 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p05 proof gate",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p06 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p06 proof gate",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p07 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p07 proof gate",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p08 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p08 proof gate",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p09 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p09 proof gate",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p10 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p10 proof gate",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p11 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p11 proof gate",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p12 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p12 proof gate",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p13 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p13 proof gate",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p14 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p14 proof gate",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p15 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "p15 proof gate",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r01 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r01 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r01 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r01 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r02 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r02 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r02 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r02 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r03 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r03 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r03 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r03 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r04 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r04 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r04 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r04 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r05 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r05 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r05 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r05 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r06 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r06 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r06 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r06 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r07 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r07 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r07 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r07 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r08 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r08 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r08 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r08 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r09 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r09 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r09 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r09 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r10 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r10 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r10 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r10 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r11 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r11 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r11 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r11 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r12 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r12 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r12 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r12 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r13 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r13 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r13 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r13 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r14 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r14 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r14 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r14 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r15 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r15 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r15 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r15 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r16 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r16 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r16 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r17 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r17 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r17 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r18 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r18 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r18 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r18 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r19 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r19 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r19 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r19 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r20 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r20 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r20 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r20 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r21 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r21 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r21 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r21 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r22 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r22 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r22 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r22 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r23 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r23 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r23 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r23 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r24 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r24 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r24 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r24 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r25 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r25 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r25 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r25 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r26 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r26 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r26 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r26 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r27 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r27 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r27 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r27 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r28 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r28 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r28 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r28 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r29 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r29 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r29 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r29 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r30 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r30 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r30 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r30 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r31 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r31 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r31 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r31 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r32 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r32 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r32 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r32 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r33 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r33 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r33 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r33 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r34 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r34 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r34 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r34 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r35 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r35 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r35 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r35 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r36 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r36 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r36 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r36 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r37 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r37 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r37 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r37 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r38 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r38 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r38 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r38 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r39 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r39 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r39 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r39 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r40 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r40 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r40 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r40 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r41 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r41 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r41 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r41 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r42 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r42 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r42 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r43 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r43 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r43 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r43 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r44 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r44 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r44 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r44 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r45 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r45 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r45 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r45 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r46 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r46 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r46 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r46 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r47 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r47 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r47 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r47 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r48 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r48 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r48 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r48 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r49 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r49 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r49 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r49 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r50 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r50 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r50 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r50 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r51 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r51 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r51 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r51 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r52 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r52 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r52 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r52 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r53 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r53 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r53 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r53 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r54 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r54 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r54 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r54 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r55 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r55 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r55 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r56 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r56 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r56 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r57 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r57 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r57 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r58 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r58 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r58 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r59 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r59 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r59 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r59 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r60 check",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r60 normalize",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r60 emit JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "r60 execute JS",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "n01 rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "n02 rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "n03 rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "n04 rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "n05 rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "n06 rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "n07 rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "n08 rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "n09 rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "n10 rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "n11 rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "n12 rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "n13 rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "n14 rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "n15 rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "n16 rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "n17 rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "n18 rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "n19 rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "n20 rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "n21 rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "n22 rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "n23 rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "n24 rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "n25 rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "m01 valid mutated model",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "m01 fixed-law rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "m02 valid mutated model",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "m02 fixed-law rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "m03 valid mutated model",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "m03 fixed-law rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "m04 valid mutated model",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "m04 fixed-law rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "m05 valid mutated model",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "m05 fixed-law rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "m06 valid mutated model",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "m06 fixed-law rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "m07 valid mutated model",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "m07 fixed-law rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "m08 valid mutated model",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "m08 fixed-law rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "m09 valid mutated model",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "m09 fixed-law rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "m10 valid mutated model",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "m10 fixed-law rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "m11 valid mutated model",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "m11 fixed-law rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "m12 valid mutated model",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "m12 fixed-law rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "m13 fixed-law rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "m14 valid mutated model",
+      "exit": 0,
+      "status": "passed"
+    },
+    {
+      "name": "m14 fixed-law rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "m15 fixed-law rejection",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "integrity: reject changed implementation",
+      "exit": 1,
+      "status": "passed"
+    },
+    {
+      "name": "integrity: reject missing law import",
+      "exit": 1,
+      "status": "passed"
+    }
+  ],
+  "manifest_sha256": "cd9e1507a37db180e1fe22e135fb582824231f11e09edcd91e11886379de46ed",
+  "mutations_sha256": "96e31d8b57eaa1e04f0412a0ba68afa166613ae3532aa507acc958a8907c28c9",
+  "full_local_report_sha256": "193bf5ddd92beaa77032fd47c15e1bb9b4dc0c40a1ce2b81b156a011f6f09bd3",
+  "note": "Compact observed run record. Full command/stdout/stderr records are regenerated by scripts/validate.py --report. Paths in this record are repository-relative."
+}

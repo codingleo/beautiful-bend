@@ -51,6 +51,11 @@ Array notation has sharp edges in this pin:
 [arrays.bend](../examples/arrays.bend) writes slot zero, reads it, then reads
 index eight using the returned owner. Both reads yield 17. It deliberately
 documents wrapping, so users do not mistake it for a safe indexing wrapper.
+The expanded [clone example](../examples/suite/systems/clone_independence.bend)
+checks every slot after updating each owner independently. The
+[index wrapper](../examples/suite/systems/checked_index.bend) explicitly rejects
+the capacity boundary. These are distinct contracts; neither changes Base's
+wrapping semantics.
 
 ## Distinguish concurrent effects from parallel computation
 
@@ -58,6 +63,10 @@ documents wrapping, so users do not mistake it for a safe indexing wrapper.
 This is effect scheduling on the event loop, distinct from pure fork/join
 calls. `IO.within` timing out does not cancel the losing action. Account for
 its eventual effects and resources; do not treat a timeout as rollback.
+The [independent IO example](../examples/suite/systems/io_independent.bend)
+joins pure-result tasks in reverse creation order, then prints from the parent.
+Its exact output checks values and parent sequencing; it makes no assertion
+about which forked task ran first or how much concurrency occurred.
 
 Custom effects need backend-specific host implementations. Read the installed
 `bend guide effects` and implementation; that upstream extra is labelled an

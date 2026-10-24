@@ -8,6 +8,11 @@ their results. Favor a decomposition with similar work on both branches.
 [parallel_tree.bend](../examples/parallel_tree.bend) demonstrates the notation
 over a balanced input. The `Tree` type does not require balance; a skewed input
 is still possible and may be a poor parallel workload.
+The expanded [balanced](../examples/suite/systems/balanced_checksum.bend),
+[skewed](../examples/suite/systems/skewed_statistics.bend) and
+[empty](../examples/suite/systems/empty_workload.bend) fixtures compare with
+sequential definitions and independent arithmetic expectations. Their JS runs
+test decomposition correctness on those samples, not parallel scheduling.
 
 Do not parallelize by duplicating useful work or adding tasks to a trivial
 operation just to show the syntax. A sequential list fold is often clearer
@@ -18,7 +23,7 @@ design recommendations, not measured break-even thresholds.
 
 | Path | What it does | What a successful run establishes |
 |---|---|---|
-| `bend value.bend` with a pure main | Checker normalization | Small result, not native performance |
+| `bend value.bend` with a pure main | Checker normalization; some primitives stay symbolic | Normalized result where supported, not native performance |
 | `bend app.bend -o app`; run `./app` | Native CPU executable | Behavior on that host/configuration |
 | `f!(x)` in a native build | GPU-marked call; CPU fallback without a GPU | Only the backend actually observed |
 | `bend app.bend -o app.js`; run Node | JavaScript; parallel calls run sequentially | JS behavior, not scheduling or GPU behavior |

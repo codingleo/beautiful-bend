@@ -1,6 +1,6 @@
 # Evaluating the skill
 
-[cases.json](cases.json) contains five tool-independent tasks and observable
+[cases.json](cases.json) contains six tool-independent tasks and observable
 rubrics: fresh implementation, an affine refactor, law-preserving repair,
 performance review, and language-generation detection. These are not claimed
 to implement any vendor's `plugin eval` schema.
@@ -27,5 +27,7 @@ successful run is not a controlled improvement claim.
 Initial evidence: one fresh **gpt-6-astra** agent completed `parse-quantities`
 with the skill. The task included an output directory and executable location,
 but not the rubric or expected answers. See
-[the dated record](results/2026-10-24.md). The other four tasks and a no-skill
-baseline have not been run.
+[the dated record](results/2026-10-24.md). A second, novel law-preserving repair task ran with the expanded skill; see
+[the 100-suite evaluation record](results/2026-10-24-100.md). The original four
+remaining tasks and a no-skill baseline have not been run. Neither task counts
+toward the 100 compiler/runtime cases.

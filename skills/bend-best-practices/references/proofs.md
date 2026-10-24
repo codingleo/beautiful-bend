@@ -1,5 +1,8 @@
 # Laws and proofs
 
+- [Contracts](#keep-the-contract-separate) · [Induction](#build-a-proof-one-constructor-at-a-time)
+- [Verification](#know-which-check-ran) · [Review](#review-questions) · [Law-driven examples](#use-laws-to-drive-the-implementation)
+
 Scope: Bend 2.0.39; see the pinned [sources](sources.md). Treat laws as the
 specification and proofs as an implementation obligation, not as a replacement
 for deciding whether the specification expresses the user's intent.
@@ -77,3 +80,25 @@ Could a degenerate implementation satisfy it while breaking the request? Does
 the proof depend on the implementation under review? Are the real laws imported?
 Are any holes, unsafe definitions, foreign assumptions, or kernel failures left?
 State these limits alongside the exact check results.
+
+## Use laws to drive the implementation
+
+The [proof examples](examples.md#law-and-proof-projects) include induction over
+Nat, lists and trees, finite state transitions, equality transport and a witness.
+Each has a separate specification, implementation and proof. Start by reading
+the law, predict a defect it should exclude, then inspect the proof. The
+repository runner checks a targeted mutation for every project with the original
+LAWS bytes preserved. Mutations are checks of sensitivity, not proof completeness.
+
+State the exact property. Map length preservation does not prove that every
+payload was incremented. Involution alone allows the identity function; it does
+not uniquely specify toggling or mirroring. Congruence shows that equal inputs
+have equal outputs; it does not establish a particular business rule. Add
+independent behavior laws when the application needs those stronger claims.
+Boundary runtime checks complement universal claims without replacing them.
+
+For rewrites, `%e : P` requires `P` with the equality's right side at `_` to
+match the current goal, then leaves the left-side substitution to prove. Keep
+computed terms consistent across successive rewrites; premature simplification
+in a motive can prevent the next match. See the two subtree rewrites in
+[tree mirror](../examples/suite/proofs/tree_mirror/PROOF.bend).

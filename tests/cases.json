@@ -1,82 +1,1015 @@
 {
-  "runnable": [
+  "schema_version": 2,
+  "cases": [
     {
-      "file": "arrays.bend",
-      "stdout": "(17, 17)\n",
-      "normalize": true
+      "id": "p01",
+      "kind": "proof",
+      "category": "proofs/counter",
+      "file": "skills/bend-best-practices/examples/laws/PROOF.bend",
+      "purpose": "Zero credit steps preserve balance; crediting empty balance counts steps.",
+      "oracle": "Zero performs no work; each successor step adds one, so induction on steps establishes the count.",
+      "law_file": "skills/bend-best-practices/examples/laws/LAWS.bend",
+      "law_sha256": "9f1702974895bc92985fd1d75154f08e72a14fa5e8b9a0fca5657ffc49638804"
     },
     {
-      "file": "effects.bend",
-      "stdout": "42\ninvalid number\n",
-      "normalize": false
+      "id": "p02",
+      "kind": "proof",
+      "category": "proofs/toggle",
+      "file": "skills/bend-best-practices/examples/suite/proofs/toggle/PROOF.bend",
+      "purpose": "Toggling twice restores every Boolean state.",
+      "oracle": "The two Boolean constructors exchange places; two exchanges restore either input.",
+      "law_file": "skills/bend-best-practices/examples/suite/proofs/toggle/LAWS.bend",
+      "law_sha256": "3d631330f3d10fdb0afe8cff44e8fc441fe45358169ad42dee5367e62be703f6"
     },
     {
-      "file": "invoice.bend",
+      "id": "p03",
+      "kind": "proof",
+      "category": "proofs/latch",
+      "file": "skills/bend-best-practices/examples/suite/proofs/latch/PROOF.bend",
+      "purpose": "Setting a latch is idempotent and always establishes True.",
+      "oracle": "Setting either state produces True, which is stable under setting.",
+      "law_file": "skills/bend-best-practices/examples/suite/proofs/latch/LAWS.bend",
+      "law_sha256": "182cc90a1f4e6c25559836822f4ea375634f5069b60547f264d9373f23415616"
+    },
+    {
+      "id": "p04",
+      "kind": "proof",
+      "category": "proofs/traffic_cycle",
+      "file": "skills/bend-best-practices/examples/suite/proofs/traffic_cycle/PROOF.bend",
+      "purpose": "Three transitions restore each traffic signal phase.",
+      "oracle": "A three-constructor cyclic permutation has period three.",
+      "law_file": "skills/bend-best-practices/examples/suite/proofs/traffic_cycle/LAWS.bend",
+      "law_sha256": "882c73eb5de98d09a2493c1afd82bc837df7da44fe2a15070c3555bac5f4c9af"
+    },
+    {
+      "id": "p05",
+      "kind": "proof",
+      "category": "proofs/addition_associativity",
+      "file": "skills/bend-best-practices/examples/suite/proofs/addition_associativity/PROOF.bend",
+      "purpose": "Grouping unbounded Nat additions preserves the sum.",
+      "oracle": "Induction on the first count: zero removes itself; each successor prefixes both sides.",
+      "law_file": "skills/bend-best-practices/examples/suite/proofs/addition_associativity/LAWS.bend",
+      "law_sha256": "843d5e9f854a42a9025417b0fd8060a161090140af08e572886a7210a3677767"
+    },
+    {
+      "id": "p06",
+      "kind": "proof",
+      "category": "proofs/replicate_length",
+      "file": "skills/bend-best-practices/examples/suite/proofs/replicate_length/PROOF.bend",
+      "purpose": "A batch of n identical units contains exactly n elements.",
+      "oracle": "Zero creates an empty batch; each successor creates one element and recurses on the predecessor.",
+      "law_file": "skills/bend-best-practices/examples/suite/proofs/replicate_length/LAWS.bend",
+      "law_sha256": "31e68591cdba8f4ef7b3dc6c07e8a31c577138adba1312fc7b60994839772f3c"
+    },
+    {
+      "id": "p07",
+      "kind": "proof",
+      "category": "proofs/append_identity",
+      "file": "skills/bend-best-practices/examples/suite/proofs/append_identity/PROOF.bend",
+      "purpose": "Appending an empty suffix preserves all list elements.",
+      "oracle": "An empty prefix stays empty; a nonempty prefix preserves its head and applies the property to its tail.",
+      "law_file": "skills/bend-best-practices/examples/suite/proofs/append_identity/LAWS.bend",
+      "law_sha256": "36183b3a2c633a5d1fb3250e93315f8c8f3320d04ff391dca44dc0020fc79f04"
+    },
+    {
+      "id": "p08",
+      "kind": "proof",
+      "category": "proofs/append_length",
+      "file": "skills/bend-best-practices/examples/suite/proofs/append_length/PROOF.bend",
+      "purpose": "Concatenation adds list lengths.",
+      "oracle": "Concatenation preserves each prefix element and then the suffix; induction counts one extra element per prefix constructor.",
+      "law_file": "skills/bend-best-practices/examples/suite/proofs/append_length/LAWS.bend",
+      "law_sha256": "80a5ad11638a8fadecfe41d620d2c598b25a40155c09c2540832aea457330d88"
+    },
+    {
+      "id": "p09",
+      "kind": "proof",
+      "category": "proofs/map_length",
+      "file": "skills/bend-best-practices/examples/suite/proofs/map_length/PROOF.bend",
+      "purpose": "Incrementing every list entry preserves its length.",
+      "oracle": "Mapping emits exactly one successor for every input element, with no insertion or deletion.",
+      "law_file": "skills/bend-best-practices/examples/suite/proofs/map_length/LAWS.bend",
+      "law_sha256": "5ec3ed6da3e33f31e2aebbf54709bbf52aedd6889651354438a5eb8bb656ed96"
+    },
+    {
+      "id": "p10",
+      "kind": "proof",
+      "category": "proofs/optional_roundtrip",
+      "file": "skills/bend-best-practices/examples/suite/proofs/optional_roundtrip/PROOF.bend",
+      "purpose": "Encoding optional Nat into a domain outcome and decoding preserves absence and payload.",
+      "oracle": "The absent and present constructors have separate reversible encodings; the present payload is returned unchanged.",
+      "law_file": "skills/bend-best-practices/examples/suite/proofs/optional_roundtrip/LAWS.bend",
+      "law_sha256": "e19e51ff971161e65e017d867eeb974800a409e20d08448dfc1d6c4ae8b22a7a"
+    },
+    {
+      "id": "p11",
+      "kind": "proof",
+      "category": "proofs/clamp_one",
+      "file": "skills/bend-best-practices/examples/suite/proofs/clamp_one/PROOF.bend",
+      "purpose": "Saturating a Nat count at one is idempotent and preserves zero.",
+      "oracle": "The image contains only zero and one, both fixed points of saturation.",
+      "law_file": "skills/bend-best-practices/examples/suite/proofs/clamp_one/LAWS.bend",
+      "law_sha256": "1980808d6b569d72f9dcd0999e08205d9a49826139996028063b5467e38ba403"
+    },
+    {
+      "id": "p12",
+      "kind": "proof",
+      "category": "proofs/workflow_reset",
+      "file": "skills/bend-best-practices/examples/suite/proofs/workflow_reset/PROOF.bend",
+      "purpose": "Reset after any bounded workflow step establishes the idle state.",
+      "oracle": "Every possible step result belongs to the three-state workflow; reset maps each constructor to Idle.",
+      "law_file": "skills/bend-best-practices/examples/suite/proofs/workflow_reset/LAWS.bend",
+      "law_sha256": "3655d6027ca4e7dcb3f3ad219d8f289b2a02c46bbefd6227be2e594dcbf6fc9c"
+    },
+    {
+      "id": "p13",
+      "kind": "proof",
+      "category": "proofs/equality_transport",
+      "file": "skills/bend-best-practices/examples/suite/proofs/equality_transport/PROOF.bend",
+      "purpose": "Equal counts yield equal successor ticket numbers.",
+      "oracle": "Applying the same successor function to propositionally equal inputs preserves equality by congruence.",
+      "law_file": "skills/bend-best-practices/examples/suite/proofs/equality_transport/LAWS.bend",
+      "law_sha256": "b2980c89eb3057a233aab3f755b047c037cabfe01145041ea43408ee594470ac"
+    },
+    {
+      "id": "p14",
+      "kind": "proof",
+      "category": "proofs/tree_mirror",
+      "file": "skills/bend-best-practices/examples/suite/proofs/tree_mirror/PROOF.bend",
+      "purpose": "Mirroring a binary tree twice restores its entire structure.",
+      "oracle": "Leaves are fixed; a branch swaps its children twice and recursively restores both subtrees.",
+      "law_file": "skills/bend-best-practices/examples/suite/proofs/tree_mirror/LAWS.bend",
+      "law_sha256": "a03d2c27e67f84063b4adc4ff675ac3b8e1d6c591b5fab62bc35303c88a7c477"
+    },
+    {
+      "id": "p15",
+      "kind": "proof",
+      "category": "proofs/predecessor_witness",
+      "file": "skills/bend-best-practices/examples/suite/proofs/predecessor_witness/PROOF.bend",
+      "purpose": "Every Nat has a successor whose predecessor recovers the original value.",
+      "oracle": "Choose the successor constructor as the existential witness; predecessor removes exactly that constructor.",
+      "law_file": "skills/bend-best-practices/examples/suite/proofs/predecessor_witness/LAWS.bend",
+      "law_sha256": "2acb41a3931e8614a214d11bc774888f4ab99f7a10d2582e89e807c4365fabc0"
+    },
+    {
+      "id": "r01",
+      "kind": "run",
+      "category": "core/domain",
+      "file": "skills/bend-best-practices/examples/invoice.bend",
+      "purpose": "Sum priced and complimentary invoice lines, including empty input.",
+      "oracle": "Empty total is 0; 2*120+0+3*50 = 390.",
       "stdout": "(0, 390)\n",
       "normalize": true
     },
     {
-      "file": "laws/main.bend",
+      "id": "r02",
+      "kind": "run",
+      "category": "core/quantities",
+      "file": "skills/bend-best-practices/examples/quantities.bend",
+      "purpose": "Duplicate a Data number and apply a closed map template.",
+      "oracle": "7 squared is 49; incrementing 0,9,41 gives 1,10,42.",
+      "stdout": "(49, [1, 10, 42])\n",
+      "normalize": true
+    },
+    {
+      "id": "r03",
+      "kind": "run",
+      "category": "core/recursion",
+      "file": "skills/bend-best-practices/examples/laws/main.bend",
+      "purpose": "Execute the implementation used by the separate counter laws.",
+      "oracle": "Crediting zero to 9 leaves 9; crediting 3 to 4 gives 7.",
       "stdout": "(9n, 7n)\n",
       "normalize": true
     },
     {
-      "file": "parallel_tree.bend",
-      "stdout": "10\n",
+      "id": "r04",
+      "kind": "run",
+      "category": "core/domain",
+      "file": "skills/bend-best-practices/examples/suite/core/shipment.bend",
+      "purpose": "Use nested domain constructors to distinguish free, standard, and express shipping.",
+      "oracle": "Collection is free; a standard envelope is 2; parcel cost is 3+2*kg; express adds 5. Samples yield 0,2,3,9,14.",
+      "stdout": "(0, 2, 3, 9, 14)\n",
       "normalize": true
     },
     {
-      "file": "parsing.bend",
+      "id": "r05",
+      "kind": "run",
+      "category": "core/domain",
+      "file": "skills/bend-best-practices/examples/suite/core/gate_transitions.bend",
+      "purpose": "Exhaustively match two domain inputs to implement a gate transition table.",
+      "oracle": "Coin opens either state; push closes an open gate and leaves a closed gate closed. Two pushes after a coin end closed.",
+      "stdout": "(Opened{}, Closed{}, Opened{}, Closed{}, Closed{})\n",
+      "normalize": true
+    },
+    {
+      "id": "r06",
+      "kind": "run",
+      "category": "core/recursion",
+      "file": "skills/bend-best-practices/examples/suite/core/compound_growth.bend",
+      "purpose": "Use shrinking Nat periods before a changing U32 accumulator.",
+      "oracle": "Zero periods preserves principal; each period doubles it: 5,10,40; zero principal remains zero.",
+      "stdout": "(5, 10, 40, 0)\n",
+      "normalize": true
+    },
+    {
+      "id": "r07",
+      "kind": "run",
+      "category": "core/recursion",
+      "file": "skills/bend-best-practices/examples/suite/core/expression_eval.bend",
+      "purpose": "Evaluate a recursive domain AST with two different binary operators.",
+      "oracle": "Literal zero is zero; 4+5=9; (2+3)*4=20; 2+(3*4)=14.",
+      "stdout": "(0, 9, 20, 14)\n",
+      "normalize": true
+    },
+    {
+      "id": "r08",
+      "kind": "run",
+      "category": "core/arithmetic",
+      "file": "skills/bend-best-practices/examples/suite/core/stock_boundaries.bend",
+      "purpose": "Contrast natural stock depletion with machine-word wraparound.",
+      "oracle": "Nat subtraction saturates: 0-1=0, 3-5=0, 5-3=2. U32 is modulo 2^32: 0-1=4294967295 and max+1=0.",
+      "stdout": "(0n, 0n, 2n, 4294967295, 0)\n",
+      "normalize": true
+    },
+    {
+      "id": "r09",
+      "kind": "run",
+      "category": "core/arithmetic",
+      "file": "skills/bend-best-practices/examples/suite/core/checked_add.bend",
+      "purpose": "Reject overflowing U32 addition before performing it.",
+      "oracle": "a+b fits iff b <= max-a. 0+0 and max+0 fit; (max-1)+1 fits at max; max+1 and 2147483648+2147483648 overflow.",
+      "stdout": "(Fits{0}, Fits{4294967295}, Fits{4294967295}, Overflow{}, Overflow{})\n",
+      "normalize": true
+    },
+    {
+      "id": "r10",
+      "kind": "run",
+      "category": "core/arithmetic",
+      "file": "skills/bend-best-practices/examples/suite/core/checked_multiply.bend",
+      "purpose": "Handle zero separately and reject overflowing U32 products.",
+      "oracle": "A zero factor produces 0; for positive left, right <= floor(max/left) is exact. 65535*65537=max fits; 65536 squared exceeds max by 1.",
+      "stdout": "(Fits{0}, Fits{0}, Fits{4294967295}, Fits{4294967295}, Overflow{})\n",
+      "normalize": true
+    },
+    {
+      "id": "r11",
+      "kind": "run",
+      "category": "core/generics",
+      "file": "skills/bend-best-practices/examples/suite/core/erased_generic_swap.bend",
+      "purpose": "Erase generic types while moving heterogeneous values through a pair helper.",
+      "oracle": "Swapping (7,3n) gives (3n,7); swapping (False,0) gives (0,False); the generic identity also accepts and consumes a captured closure once, yielding 12.",
+      "stdout": "((3n, 7), (0, False{}), 12)\n",
+      "normalize": true
+    },
+    {
+      "id": "r12",
+      "kind": "run",
+      "category": "core/generics",
+      "file": "skills/bend-best-practices/examples/suite/core/erased_data_snapshot.bend",
+      "purpose": "Require Data only for the generic operation that actually duplicates its input.",
+      "oracle": "Duplicating 0 yields two zeros, Versioned{7} yields two equal domain snapshots, and True yields two True values.",
+      "stdout": "((0, 0), (Versioned{7}, Versioned{7}), True{}, True{})\n",
+      "normalize": true
+    },
+    {
+      "id": "r13",
+      "kind": "run",
+      "category": "core/templates",
+      "file": "skills/bend-best-practices/examples/suite/core/closed_templates.bend",
+      "purpose": "Reuse closed top-level and lambda operations through a template.",
+      "oracle": "Applying +3 twice to 0 or 4 gives 6 or 10; applying *2 twice to 3 gives 12; applying identity twice preserves zero.",
+      "stdout": "(6, 10, 12, 0)\n",
+      "normalize": true
+    },
+    {
+      "id": "r14",
+      "kind": "run",
+      "category": "core/closures",
+      "file": "skills/bend-best-practices/examples/suite/core/captured_composition.bend",
+      "purpose": "Compose two affine runtime closures and call each exactly once.",
+      "oracle": "(x+3)*2 maps 0 to 6 and 4 to 14; (x*2)+3 maps 4 to 11; a partial application adding 7 maps 5 to 12.",
+      "stdout": "(6, 14, 11, 12)\n",
+      "normalize": true
+    },
+    {
+      "id": "r15",
+      "kind": "run",
+      "category": "core/quantities",
+      "file": "skills/bend-best-practices/examples/suite/core/runtime_repeated_offset.bend",
+      "purpose": "Repeat an operation with a runtime Data parameter instead of copying a captured closure.",
+      "oracle": "Adding offset 7 zero, once, and four times to 3 yields 3,10,31; adding offset zero six times preserves 9.",
+      "stdout": "(3, 10, 31, 9)\n",
+      "normalize": true
+    },
+    {
+      "id": "r16",
+      "kind": "run",
+      "category": "core/numeric-conversions",
+      "file": "skills/bend-best-practices/examples/suite/core/quarter_units.bend",
+      "purpose": "Convert Nat unit counts through U32 and exact binary fractions for fixed quarter-unit billing.",
+      "oracle": "Quarter counts 0,1,3,8 correspond to 0,25,75,200 hundredths; Nat/U32 round trips at 0 and 17 preserve their counts. Runtime-only: Bend 2.0.39 normalization leaves these F32 primitives unevaluated; exact JavaScript execution is required.",
+      "stdout": "(0, 25, 75, 200, 0n, 17n)\n",
+      "normalize": false
+    },
+    {
+      "id": "r17",
+      "kind": "run",
+      "category": "core/numeric-conversions",
+      "file": "skills/bend-best-practices/examples/suite/core/sensor_clamp.bend",
+      "purpose": "Apply a bounded sensor calibration with computed F32 comparisons passed to helpers.",
+      "oracle": "Clamp to [0,1], then scale by 100: -0.5=>0, 0=>0, .25=>25, 1=>100, 1.5=>100. All fractions and products are exactly binary-representable. Runtime-only: Bend 2.0.39 normalization leaves these F32 primitives unevaluated; exact JavaScript execution is required.",
+      "stdout": "(0, 0, 25, 100, 100)\n",
+      "normalize": false
+    },
+    {
+      "id": "r18",
+      "kind": "run",
+      "category": "core/recursion",
+      "file": "skills/bend-best-practices/examples/suite/core/lexicographic_grid.bend",
+      "purpose": "Traverse a finite grid with a lexicographically decreasing pair and a resettable column counter.",
+      "oracle": "Rows=0 visits no cells; zero-width rows visit none; 1x1 gives 1, 2x3 gives 6, and 3x2 plus initial tally 4 gives 10.",
+      "stdout": "(0, 0, 1, 6, 10)\n",
+      "normalize": true
+    },
+    {
+      "id": "r19",
+      "kind": "run",
+      "category": "core/quantities",
+      "file": "skills/bend-best-practices/examples/suite/core/selective_fields.bend",
+      "purpose": "Reuse only matched numeric fields while consuming a domain record once.",
+      "oracle": "A rectangle reports area and perimeter: 0x0 => (0,0), 0x4 => (0,8), 3x4 => (12,14).",
+      "stdout": "((0, 0), (0, 8), 12, 14)\n",
+      "normalize": true
+    },
+    {
+      "id": "r20",
+      "kind": "run",
+      "category": "core/closures",
+      "file": "skills/bend-best-practices/examples/suite/core/affine_policy.bend",
+      "purpose": "Store an affine callback in a Type-kinded domain and consume it through pattern matching.",
+      "oracle": "Fixed fee ignores its input and yields 5; an add-3 callback maps 0=>3 and 7=>10; a captured multiplier 4 maps 3=>12.",
+      "stdout": "(5, 3, 10, 12)\n",
+      "normalize": true
+    },
+    {
+      "id": "r21",
+      "kind": "run",
+      "category": "errors/maybe",
+      "file": "skills/bend-best-practices/examples/parsing.bend",
+      "purpose": "Sequence two fallible decimal reads without confusing valid zero with failure.",
+      "oracle": "12+30=42; malformed first input propagates None; 0+0=0. Existing fixture is unchanged.",
       "stdout": "(\"42\", \"invalid number\", \"0\")\n",
       "normalize": true
     },
     {
-      "file": "quantities.bend",
-      "stdout": "(49, [1, 10, 42])\n",
+      "id": "r22",
+      "kind": "run",
+      "category": "collections/map-fold",
+      "file": "skills/bend-best-practices/examples/suite/collections/energy_total.bend",
+      "purpose": "Map readings to squared energy and sum, including no readings and zero.",
+      "oracle": "Sum of squares: []=0; [0]=0; [3,4,0]=9+16+0=25.",
+      "stdout": "(0, 0, 25)\n",
       "normalize": true
-    }
-  ],
-  "support": [
-    "laws/counter.bend",
-    "laws/LAWS.bend",
-    "laws/PROOF.bend"
-  ],
-  "negative": [
+    },
     {
+      "id": "r23",
+      "kind": "run",
+      "category": "collections/filter-sort",
+      "file": "skills/bend-best-practices/examples/suite/collections/ranked_scores.bend",
+      "purpose": "Keep passing scores, sort descending, and cap a leaderboard with duplicates retained.",
+      "oracle": "Passing threshold is 60 inclusive; descending [99,80,80,60] truncated at 3 gives [99,80,80]; empty/all-failing/zero-limit give [].",
+      "stdout": "([99, 80, 80], [], [], [])\n",
+      "normalize": true
+    },
+    {
+      "id": "r24",
+      "kind": "run",
+      "category": "collections/zip-fold",
+      "file": "skills/bend-best-practices/examples/suite/collections/paired_cost.bend",
+      "purpose": "Compute cost of aligned quantities and prices, explicitly truncating unmatched trailing entries.",
+      "oracle": "Zip stops at the shorter input: 2*10+3*7=41; empty side costs 0; [4,9] with [5] costs 20.",
+      "stdout": "(41, 0, 0, 20)\n",
+      "normalize": true
+    },
+    {
+      "id": "r25",
+      "kind": "run",
+      "category": "collections/slicing",
+      "file": "skills/bend-best-practices/examples/suite/collections/page_window.bend",
+      "purpose": "Slice a page by offset and length and reverse it for newest-first presentation.",
+      "oracle": "Drop first 2 from [10,20,30,40,50], take 2, reverse => [40,30]; partial tail => [50]; offsets past end, empty input, zero size => [].",
+      "stdout": "([40, 30], [50], [], [], [])\n",
+      "normalize": true
+    },
+    {
+      "id": "r26",
+      "kind": "run",
+      "category": "collections/search-maybe",
+      "file": "skills/bend-best-practices/examples/suite/collections/first_available.bend",
+      "purpose": "Choose first adequate stock count and compute unallocated remainder, preserving missing result.",
+      "oracle": "First count >=3 in [0,2,5,8] is 5, remainder 2; [3] remainder 0; no adequate count and empty input both none.",
+      "stdout": "\"2|0|unavailable|unavailable\"\n",
+      "normalize": true
+    },
+    {
+      "id": "r27",
+      "kind": "run",
+      "category": "collections/predicates",
+      "file": "skills/bend-best-practices/examples/suite/collections/batch_health.bend",
+      "purpose": "Classify reading batches by existence of a high alarm and universal in-range readings.",
+      "oracle": "Alarm is >90; valid is <=100. [] has no alarm and vacuously all valid; [0,90] no alarm valid; [91,100] alarm valid; [101] alarm invalid.",
+      "stdout": "\"False/True|False/True|True/True|True/False\"\n",
+      "normalize": true
+    },
+    {
+      "id": "r28",
+      "kind": "run",
+      "category": "collections/fold-order",
+      "file": "skills/bend-best-practices/examples/suite/collections/fold_order.bend",
+      "purpose": "Build a nested expression with foldr and append a route with foldl to preserve their different argument orders.",
+      "oracle": "Right fold nest(a,nest(b,z)) gives (a:(b:z)); left fold append(append(root,a),b) gives root/a/b. Empty folds preserve z/root.",
+      "stdout": "\"(a:(b:z))|root/a/b|z|root\"\n",
+      "normalize": true
+    },
+    {
+      "id": "r29",
+      "kind": "run",
+      "category": "text/split-trim-filter",
+      "file": "skills/bend-best-practices/examples/suite/collections/clean_labels.bend",
+      "purpose": "Normalize comma-separated labels by ASCII whitespace trimming, lowercasing, removing empty labels and joining.",
+      "oracle": "Trim and lowercase [ Red , empty, BLUE , space] then remove empties => red/blue; empty/all-delimiter input => empty; internal spaces survive.",
+      "stdout": "\"red/blue|||two words/green\"\n",
+      "normalize": true
+    },
+    {
+      "id": "r30",
+      "kind": "run",
+      "category": "text/unicode-slicing",
+      "file": "skills/bend-best-practices/examples/suite/collections/unicode_window.bend",
+      "purpose": "Clip and reverse Unicode code points without treating UTF-8 bytes as characters; check list conversion round-trip.",
+      "oracle": "A,\u00e9,\ud83d\ude42,Z are four code points. Drop 1/take 2 yields \u00e9\ud83d\ude42, reversed begins U+1F642=128578 and has length 2. Empty window defaults char to 0; composed e+combining accent counts 2.",
+      "stdout": "(4n, 2n, 128578, 0, 2n, True{})\n",
+      "normalize": true
+    },
+    {
+      "id": "r31",
+      "kind": "run",
+      "category": "text/record-grammar",
+      "file": "skills/bend-best-practices/examples/suite/collections/record_shape.bend",
+      "purpose": "Accept exactly three delimiter-separated fields while preserving empty field positions and rejecting missing/extra fields.",
+      "oracle": "a,b,c and a,,c have exactly 3 fields; ,, has 3 empty fields; empty input has 1 field; a,b, has 3; a,b,c,d has 4.",
+      "stdout": "\"a/b/c|a//c|//|bad fields|a/b/|bad fields\"\n",
+      "normalize": true
+    },
+    {
+      "id": "r32",
+      "kind": "run",
+      "category": "text/parser-grammar",
+      "file": "skills/bend-best-practices/examples/suite/collections/decimal_grammar.bend",
+      "purpose": "Apply explicit decimal token grammar and reject signs, spaces, Unicode digits and U32 overflow.",
+      "oracle": "Only nonempty ASCII digits are accepted, integer value <=4294967295. 007=>7, 0=>0, max accepted; empty,+1,space1,12x,Arabic digit and max+1 rejected.",
+      "stdout": "\"7|0|4294967295|none|none|none|none|none|none\"\n",
+      "normalize": true
+    },
+    {
+      "id": "r33",
+      "kind": "run",
+      "category": "errors/result-validation",
+      "file": "skills/bend-best-practices/examples/suite/collections/service_port.bend",
+      "purpose": "Parse a service port and propagate syntax versus domain-range errors through Result.",
+      "oracle": "Valid ports are 1..65535 inclusive; 443 and 65535 accepted, 0 and 65536 range errors, empty/x syntax errors.",
+      "stdout": "\"443|65535|error:range|error:range|error:syntax|error:syntax\"\n",
+      "normalize": true
+    },
+    {
+      "id": "r34",
+      "kind": "run",
+      "category": "errors/result-sequencing",
+      "file": "skills/bend-best-practices/examples/suite/collections/safe_ratio.bend",
+      "purpose": "Sequence numerator and denominator parsing and reject division by zero with first-error precedence.",
+      "oracle": "Integer quotient 20/6=3, 0/7=0; denominator 0 => zero; bad numerator wins over bad denominator; valid numerator/bad denominator => denominator.",
+      "stdout": "\"3|0|error:zero|error:numerator|error:denominator\"\n",
+      "normalize": true
+    },
+    {
+      "id": "r35",
+      "kind": "run",
+      "category": "errors/maybe-fallback",
+      "file": "skills/bend-best-practices/examples/suite/collections/optional_timeout.bend",
+      "purpose": "Prefer explicit seconds, fall back to a default token, convert to milliseconds, then use a final 1000ms default.",
+      "oracle": "First valid token wins including zero: (2,9)=>2000, (bad,3)=>3000, (0,3)=>0, (empty,bad)=>1000. Inputs are bounded to 4294967 seconds before multiplying.",
+      "stdout": "(2000, 3000, 0, 1000, 1000)\n",
+      "normalize": true
+    },
+    {
+      "id": "r36",
+      "kind": "run",
+      "category": "errors/result-traversal",
+      "file": "skills/bend-best-practices/examples/suite/collections/validated_sum.bend",
+      "purpose": "Traverse numeric rows with Result, preserving the first invalid row and accepting an empty batch.",
+      "oracle": "Sum 2+3+0=5; []=0; first invalid token x in [2,x,y] yields token=x; empty token yields token=; bounded sample sums do not overflow.",
+      "stdout": "\"5|0|error:token=x|error:token=\"\n",
+      "normalize": true
+    },
+    {
+      "id": "r37",
+      "kind": "run",
+      "category": "errors/result-recovery",
+      "file": "skills/bend-best-practices/examples/suite/collections/recover_rows.bend",
+      "purpose": "Recover independently from malformed numeric rows, returning total and rejected-row count.",
+      "oracle": "[2,x,0,3] sums valid rows to 5 and rejects 1; [] => 0/0; [empty,bad] => 0/2; [0] => 0/0.",
+      "stdout": "\"5/1|0/0|0/2|0/0\"\n",
+      "normalize": true
+    },
+    {
+      "id": "r38",
+      "kind": "run",
+      "category": "collections/map-grouping",
+      "file": "skills/bend-best-practices/examples/suite/collections/word_counts.bend",
+      "purpose": "Count repeated string keys using owner-threaded map reads and report absent-key defaults.",
+      "oracle": "Tokens red blue red yield counts red=2, blue=1, absent=0 and size=2; empty tokens list yields red=0 and size=0; case-sensitive Red and red remain separate.",
+      "stdout": "\"2/1/0/2|0/0|1/2\"\n",
+      "normalize": true
+    },
+    {
+      "id": "r39",
+      "kind": "run",
+      "category": "collections/map-overlay",
+      "file": "skills/bend-best-practices/examples/suite/collections/config_overlay.bend",
+      "purpose": "Apply right-hand configuration overrides, remove a retired key, and distinguish an absent key through a supplied default.",
+      "oracle": "Base port=80,retries=2,legacy=1; overlay port=443,timeout=5 wins; deleting legacy leaves 3 keys. Lookups yield 443,2,5 and missing default 99; empty map remains empty after deletion.",
+      "stdout": "\"443/2/5/99/3|99/0\"\n",
+      "normalize": true
+    },
+    {
+      "id": "r40",
+      "kind": "run",
+      "category": "collections/set-text",
+      "file": "skills/bend-best-practices/examples/suite/collections/canonical_tags.bend",
+      "purpose": "Normalize tags, remove duplicate and empty tags, and render in deterministic sorted order.",
+      "oracle": "ASCII lowercase+trim maps Blue,red,blue to blue,red,blue; set removes duplicate and empty; sorting => blue,red. Empty input and blank tags => empty; [b,A,a] => a,b.",
+      "stdout": "\"blue,red|||a,b\"\n",
+      "normalize": true
+    },
+    {
+      "id": "r41",
+      "kind": "run",
+      "category": "arrays",
+      "file": "skills/bend-best-practices/examples/arrays.bend",
+      "purpose": "Existing owner-threaded read and wrapping index",
+      "oracle": "Eight slots means index 8 wraps to slot 0, previously set to 17.",
+      "stdout": "(17, 17)\n",
+      "normalize": true
+    },
+    {
+      "id": "r42",
+      "kind": "run",
+      "category": "effects",
+      "file": "skills/bend-best-practices/examples/effects.bend",
+      "purpose": "Existing parsing effects sequence",
+      "oracle": "12+30 produces 42; Parse.describe maps failed parsing of oops to the source literal invalid number.",
+      "stdout": "42\ninvalid number\n",
+      "normalize": false
+    },
+    {
+      "id": "r43",
+      "kind": "run",
+      "category": "parallel",
+      "file": "skills/bend-best-practices/examples/parallel_tree.bend",
+      "purpose": "Existing balanced pure tree sum",
+      "oracle": "Four leaves 1+2+3+4 total 10.",
+      "stdout": "10\n",
+      "normalize": true
+    },
+    {
+      "id": "r44",
+      "kind": "run",
+      "category": "arrays",
+      "file": "skills/bend-best-practices/examples/suite/systems/capacity.bend",
+      "purpose": "Distinguish capacity notation and depth including depth zero",
+      "oracle": "Depth zero gives one leaf; capacity 8 gives eight slots; depth four gives 2^4=16.",
+      "stdout": "(1, 8, 16)\n",
+      "normalize": true
+    },
+    {
+      "id": "r45",
+      "kind": "run",
+      "category": "arrays",
+      "file": "skills/bend-best-practices/examples/suite/systems/string_slots.bend",
+      "purpose": "Explicit non-U32 get/set preserve untouched slots",
+      "oracle": "Four empty strings with slot 3 replaced yields empty at 0 and ready at 3.",
+      "stdout": "(\"empty\", \"ready\")\n",
+      "normalize": true
+    },
+    {
+      "id": "r46",
+      "kind": "run",
+      "category": "arrays",
+      "file": "skills/bend-best-practices/examples/suite/systems/swap_slot.bend",
+      "purpose": "Swap returns old non-U32 element and threads replacement owner",
+      "oracle": "Replacing queued with sent returns queued and subsequent read returns sent.",
+      "stdout": "(\"queued\", \"sent\")\n",
+      "normalize": true
+    },
+    {
+      "id": "r47",
+      "kind": "run",
+      "category": "arrays",
+      "file": "skills/bend-best-practices/examples/suite/systems/clone_independence.bend",
+      "purpose": "Mutating cloned arrays leaves other copy independent",
+      "oracle": "Both copies begin as four sevens; left slot 0 becomes 99 while right slot 1 becomes 73. Reading all slots must produce [99,7,7,7] and [7,73,7,7], preserving independence in both directions.",
+      "stdout": "([99, 7, 7, 7], [7, 73, 7, 7])\n",
+      "normalize": true
+    },
+    {
+      "id": "r48",
+      "kind": "run",
+      "category": "arrays",
+      "file": "skills/bend-best-practices/examples/suite/systems/map_threshold.bend",
+      "purpose": "Map U32 inventory counts to Bool flags including threshold boundary",
+      "oracle": "0 and 9 are not above 9; 10 and 20 are above 9.",
+      "stdout": "[False{}, False{}, True{}, True{}]\n",
+      "normalize": true
+    },
+    {
+      "id": "r49",
+      "kind": "run",
+      "category": "arrays",
+      "file": "skills/bend-best-practices/examples/suite/systems/array_inventory.bend",
+      "purpose": "Sequential stock withdrawals and restocking preserve all other slots",
+      "oracle": "Starting four fives, withdraw two from slot 1 and add three to slot 2: 5,3,8,5.",
+      "stdout": "[5, 3, 8, 5]\n",
+      "normalize": true
+    },
+    {
+      "id": "r50",
+      "kind": "run",
+      "category": "arrays",
+      "file": "skills/bend-best-practices/examples/suite/systems/checked_index.bend",
+      "purpose": "Reject capacity index before array wrapping can occur",
+      "oracle": "Capacity four accepts index three with value eight, rejects index four as absent.",
+      "stdout": "(Some{8}, None{})\n",
+      "normalize": true
+    },
+    {
+      "id": "r51",
+      "kind": "run",
+      "category": "parallel",
+      "file": "skills/bend-best-practices/examples/suite/systems/balanced_checksum.bend",
+      "purpose": "Balanced position-sensitive checksum agrees with sequential reference",
+      "oracle": "Left checksum is 1*31+2=33; right 3*31+4=97; root 33*31+97=1120.",
+      "stdout": "(1120, True{})\n",
+      "normalize": true
+    },
+    {
+      "id": "r52",
+      "kind": "run",
+      "category": "parallel",
+      "file": "skills/bend-best-practices/examples/suite/systems/skewed_statistics.bend",
+      "purpose": "Skewed tree totals/counts agree with sequential reference",
+      "oracle": "Leaves 4,5,6 sum to 15 with count 3; Empty contributes zero.",
+      "stdout": "(15, 3, True{})\n",
+      "normalize": true
+    },
+    {
+      "id": "r53",
+      "kind": "run",
+      "category": "parallel",
+      "file": "skills/bend-best-practices/examples/suite/systems/empty_workload.bend",
+      "purpose": "Empty branches combine neutral totals/checksums",
+      "oracle": "Two empty children have sum zero, count zero, and equal zero checksums under both algorithms.",
+      "stdout": "(0, 0, True{})\n",
+      "normalize": true
+    },
+    {
+      "id": "r54",
+      "kind": "run",
+      "category": "composition",
+      "file": "skills/bend-best-practices/examples/suite/systems/independent_dependent.bend",
+      "purpose": "Distinguish independent square tasks from dependent square-of-sum pipeline",
+      "oracle": "Independent 6^2+7^2=85; sequential reference agrees; dependent (6+7)^2=169.",
+      "stdout": "((85, True{}), 169)\n",
+      "normalize": true
+    },
+    {
+      "id": "r55",
+      "kind": "run",
+      "category": "effects",
+      "file": "skills/bend-best-practices/examples/suite/systems/io_sequence.bend",
+      "purpose": "Deterministic write/print sequencing preserves newlines",
+      "oracle": "Writes omit newline; prints append newline, producing begin:loaded then validated then commit:done.",
+      "stdout": "begin:loaded\nvalidated\ncommit:done\n",
+      "normalize": false
+    },
+    {
+      "id": "r56",
+      "kind": "run",
+      "category": "effects",
+      "file": "skills/bend-best-practices/examples/suite/systems/io_pure_bind.bend",
+      "purpose": "Explicit IO.pure and nested IO.bind pass the previous result",
+      "oracle": "Pure 35 passed to add-fee becomes 42; report prints 42.",
+      "stdout": "42\n",
+      "normalize": false
+    },
+    {
+      "id": "r57",
+      "kind": "run",
+      "category": "effects",
+      "file": "skills/bend-best-practices/examples/suite/systems/io_independent.bend",
+      "purpose": "Independent fork/join results agree with direct sequential calculation",
+      "oracle": "Joined square results 49 and 36 sum to 85 even when joined in reverse creation order; direct sum is 85.",
+      "stdout": "85\n85\n",
+      "normalize": false
+    },
+    {
+      "id": "r58",
+      "kind": "run",
+      "category": "effects",
+      "file": "skills/bend-best-practices/examples/suite/systems/io_dependent.bend",
+      "purpose": "Dependent fork consumes prior joined result and agrees with direct pipeline",
+      "oracle": "First joined result is 13; second squares it to 169, matching direct square of sum.",
+      "stdout": "169\n169\n",
+      "normalize": false
+    },
+    {
+      "id": "r59",
+      "kind": "run",
+      "category": "state",
+      "file": "skills/bend-best-practices/examples/suite/systems/fuel_machine.bend",
+      "purpose": "Bounded fuel respects zero/completed and exact/exhausted boundaries",
+      "oracle": "Zero work completes at zero fuel; two ticks on three work units pauses with one remaining; three ticks completes.",
+      "stdout": "(Complete{0}, Paused{1n, 2}, Complete{3})\n",
+      "normalize": true
+    },
+    {
+      "id": "r60",
+      "kind": "run",
+      "category": "state",
+      "file": "skills/bend-best-practices/examples/suite/systems/state_transitions.bend",
+      "purpose": "Inventory command interpreter preserves empty state and counts rejected withdrawal",
+      "oracle": "Empty command list stays Stock(0,0); add5 take5 take1 add3 take2 leaves one unit and one rejection.",
+      "stdout": "(Stock{0, 0}, Stock{1, 1})\n",
+      "normalize": true
+    },
+    {
+      "id": "n01",
+      "kind": "reject",
+      "category": "rejections/structural_argument_order",
       "file": "tests/negative/accumulator_first.bend",
+      "purpose": "structural argument order",
+      "oracle": "Changing an earlier accumulator prevents lexicographic structural descent.",
       "diagnostic": "a decreasing self-call"
     },
     {
+      "id": "n02",
+      "kind": "reject",
+      "category": "rejections/computed_match",
       "file": "tests/negative/computed_match.bend",
+      "purpose": "computed match",
+      "oracle": "Computed calls are not structural parameter or field scrutinees.",
       "diagnostic": "a parameter or field scrutinee"
     },
     {
+      "id": "n03",
+      "kind": "reject",
+      "category": "rejections/computed_destructure",
       "file": "tests/negative/computed_destructure.bend",
+      "purpose": "computed destructure",
+      "oracle": "Destructuring a computed result is subject to the same structural scrutinee restriction.",
       "diagnostic": "a parameter or field scrutinee"
     },
     {
+      "id": "n04",
+      "kind": "reject",
+      "category": "rejections/array_copy",
       "file": "tests/negative/copied_array.bend",
+      "purpose": "array copy",
+      "oracle": "Arrays have affine kind Type and cannot be made reusable with +.",
       "diagnostic": "+cells can be used many times, so its type must be Data"
     },
     {
+      "id": "n05",
+      "kind": "reject",
+      "category": "rejections/false_equality",
       "file": "tests/negative/false_proof.bend",
+      "purpose": "false equality",
+      "oracle": "Reflexivity cannot identify distinct Nat constructors.",
       "diagnostic": "expected : 0n"
     },
     {
+      "id": "n06",
+      "kind": "reject",
+      "category": "rejections/closure_reuse",
       "file": "tests/negative/reused_closure.bend",
+      "purpose": "closure reuse",
+      "oracle": "Runtime function closures are affine and cannot be consumed twice.",
       "diagnostic": "consumed more than once"
     },
     {
+      "id": "n07",
+      "kind": "reject",
+      "category": "rejections/unsafe_dependency",
       "file": "tests/negative/unsafe_escape.bend",
+      "purpose": "unsafe dependency",
+      "oracle": "The ordinary proof gate rejects definitions depending on unsafe code.",
       "diagnostic": "defs that depend on @unsafe: loop"
     },
     {
+      "id": "n08",
+      "kind": "reject",
+      "category": "rejections/operator_annotation",
       "file": "tests/negative/untyped_operator.bend",
+      "purpose": "operator annotation",
+      "oracle": "This version requires an explicit operator type annotation.",
       "diagnostic": "a type for this operator"
     },
     {
+      "id": "n09",
+      "kind": "reject",
+      "category": "rejections/open_law",
       "file": "skills/bend-best-practices/examples/laws/LAWS.bend",
+      "purpose": "open law",
+      "oracle": "An unfilled law is not a completed proof.",
       "diagnostic": "not a valid proof yet"
+    },
+    {
+      "id": "n10",
+      "kind": "reject",
+      "category": "rejections/erased_runtime",
+      "file": "tests/negative/suite/erased_runtime.bend",
+      "purpose": "Use an erased argument as a runtime return value.",
+      "oracle": "An erased binder is unavailable to runtime computation.",
+      "diagnostic": "expected : -secret"
+    },
+    {
+      "id": "n11",
+      "kind": "reject",
+      "category": "rejections/data_closure_field",
+      "file": "tests/negative/suite/data_closure_field.bend",
+      "purpose": "Put a live function field into a Data datatype.",
+      "oracle": "Data fields must themselves be reusable Data; runtime closures have kind Type.",
+      "diagnostic": "expected : Data"
+    },
+    {
+      "id": "n12",
+      "kind": "reject",
+      "category": "rejections/nonexhaustive",
+      "file": "tests/negative/suite/nonexhaustive.bend",
+      "purpose": "Omit the False case from a Boolean match.",
+      "oracle": "A total safe definition must cover every constructor of the scrutinee.",
+      "diagnostic": "cases for False"
+    },
+    {
+      "id": "n13",
+      "kind": "reject",
+      "category": "rejections/match_binder_order",
+      "file": "tests/negative/suite/match_binder_order.bend",
+      "purpose": "Return to an earlier parameter after matching a later one.",
+      "oracle": "Matching may skip an earlier binder, but cannot subsequently return to it after a later match.",
+      "diagnostic": "'first' can't be matched in this position"
+    },
+    {
+      "id": "n14",
+      "kind": "reject",
+      "category": "rejections/local_match",
+      "file": "tests/negative/suite/local_match.bend",
+      "purpose": "Match a local alias of a parameter.",
+      "oracle": "A local binding does not become a parameter or pattern field eligible for structural matching.",
+      "diagnostic": "a match cannot scrutinize a local binder"
+    },
+    {
+      "id": "n15",
+      "kind": "reject",
+      "category": "rejections/template_capture",
+      "file": "tests/negative/suite/template_capture.bend",
+      "purpose": "Capture a caller local inside a template argument.",
+      "oracle": "Template arguments must be closed syntax, without free caller locals.",
+      "diagnostic": "a template applied to closed ~ arguments"
+    },
+    {
+      "id": "n16",
+      "kind": "reject",
+      "category": "rejections/template_order",
+      "file": "tests/negative/suite/template_order.bend",
+      "purpose": "Place a template parameter after a runtime argument.",
+      "oracle": "Template parameters must precede ordinary parameters.",
+      "diagnostic": "only leading binders take ~"
+    },
+    {
+      "id": "n17",
+      "kind": "reject",
+      "category": "rejections/forward_reference",
+      "file": "tests/negative/suite/forward_reference.bend",
+      "purpose": "Call a definition that is filled later in the file.",
+      "oracle": "Safe live code cannot depend on a not-yet-filled definition.",
+      "diagnostic": "a filled definition"
+    },
+    {
+      "id": "n18",
+      "kind": "reject",
+      "category": "rejections/mutual_recursion",
+      "file": "tests/negative/suite/mutual_recursion.bend",
+      "purpose": "Attempt mutual recursion between safe definitions.",
+      "oracle": "The first member references an unfilled later member; safe structural recursion does not permit this cycle.",
+      "diagnostic": "a filled definition"
+    },
+    {
+      "id": "n19",
+      "kind": "reject",
+      "category": "rejections/unchanged_recursion",
+      "file": "tests/negative/suite/unchanged_recursion.bend",
+      "purpose": "Recur with an unchanged structural argument.",
+      "oracle": "A safe self-call requires a smaller pattern-derived argument.",
+      "diagnostic": "a decreasing self-call"
+    },
+    {
+      "id": "n20",
+      "kind": "reject",
+      "category": "rejections/proof_hole",
+      "file": "tests/negative/suite/proof_hole.bend",
+      "purpose": "Leave a named hole in a universally quantified proof.",
+      "oracle": "A named goal is an unfinished proof and cannot satisfy the law.",
+      "diagnostic": "observed : ?unfinished_induction"
+    },
+    {
+      "id": "n21",
+      "kind": "reject",
+      "category": "rejections/false_induction",
+      "file": "tests/negative/suite/false_induction.bend",
+      "purpose": "Claim every Nat equals zero despite a correct zero base case.",
+      "oracle": "The successor branch must prove successor equals zero, which distinct Nat constructors refute.",
+      "diagnostic": "expected : 1n"
+    },
+    {
+      "id": "n22",
+      "kind": "reject",
+      "category": "rejections/foreign_dependency",
+      "file": "tests/negative/suite/foreign_dependency.bend",
+      "purpose": "Include a user foreign implementation in the proof dependency graph.",
+      "oracle": "The ordinary proof gate refuses user foreign assumptions even when their declared signature is well typed.",
+      "diagnostic": "defs that depend on foreign effects: external, answer"
+    },
+    {
+      "id": "n23",
+      "kind": "reject",
+      "category": "rejections/laws_import_guard",
+      "file": "tests/negative/suite/laws_import_guard/PROOF.bend",
+      "purpose": "Omit the adjacent LAWS import from the proof entry point.",
+      "oracle": "The CLI requires PROOF.bend to import its adjacent LAWS.bend.",
+      "diagnostic": "PROOF.bend must import ./LAWS.bend"
+    },
+    {
+      "id": "n24",
+      "kind": "reject",
+      "category": "rejections/duplicate_template_binder",
+      "file": "tests/negative/suite/duplicate_template_binder.bend",
+      "purpose": "Reuse a template binder name with potentially different types.",
+      "oracle": "Template binder names must be fresh, preventing substitution-key collisions.",
+      "diagnostic": "a fresh ~ binder name"
+    },
+    {
+      "id": "n25",
+      "kind": "reject",
+      "category": "rejections/erased_field_runtime",
+      "file": "tests/negative/suite/erased_field_runtime.bend",
+      "purpose": "Return an erased constructor field at runtime.",
+      "oracle": "Erased fields remain unavailable to live computation after pattern matching.",
+      "diagnostic": "expected : -secret"
     }
+  ],
+  "support": [
+    "skills/bend-best-practices/examples/laws/counter.bend",
+    "skills/bend-best-practices/examples/suite/collections/decimal.bend",
+    "skills/bend-best-practices/examples/suite/proofs/addition_associativity/LAWS.bend",
+    "skills/bend-best-practices/examples/suite/proofs/addition_associativity/model.bend",
+    "skills/bend-best-practices/examples/suite/proofs/append_identity/LAWS.bend",
+    "skills/bend-best-practices/examples/suite/proofs/append_identity/model.bend",
+    "skills/bend-best-practices/examples/suite/proofs/append_length/LAWS.bend",
+    "skills/bend-best-practices/examples/suite/proofs/append_length/model.bend",
+    "skills/bend-best-practices/examples/suite/proofs/clamp_one/LAWS.bend",
+    "skills/bend-best-practices/examples/suite/proofs/clamp_one/model.bend",
+    "skills/bend-best-practices/examples/suite/proofs/equality_transport/LAWS.bend",
+    "skills/bend-best-practices/examples/suite/proofs/equality_transport/model.bend",
+    "skills/bend-best-practices/examples/suite/proofs/latch/LAWS.bend",
+    "skills/bend-best-practices/examples/suite/proofs/latch/model.bend",
+    "skills/bend-best-practices/examples/suite/proofs/map_length/LAWS.bend",
+    "skills/bend-best-practices/examples/suite/proofs/map_length/model.bend",
+    "skills/bend-best-practices/examples/suite/proofs/optional_roundtrip/LAWS.bend",
+    "skills/bend-best-practices/examples/suite/proofs/optional_roundtrip/model.bend",
+    "skills/bend-best-practices/examples/suite/proofs/predecessor_witness/LAWS.bend",
+    "skills/bend-best-practices/examples/suite/proofs/predecessor_witness/model.bend",
+    "skills/bend-best-practices/examples/suite/proofs/replicate_length/LAWS.bend",
+    "skills/bend-best-practices/examples/suite/proofs/replicate_length/model.bend",
+    "skills/bend-best-practices/examples/suite/proofs/toggle/LAWS.bend",
+    "skills/bend-best-practices/examples/suite/proofs/toggle/model.bend",
+    "skills/bend-best-practices/examples/suite/proofs/traffic_cycle/LAWS.bend",
+    "skills/bend-best-practices/examples/suite/proofs/traffic_cycle/model.bend",
+    "skills/bend-best-practices/examples/suite/proofs/tree_mirror/LAWS.bend",
+    "skills/bend-best-practices/examples/suite/proofs/tree_mirror/model.bend",
+    "skills/bend-best-practices/examples/suite/proofs/workflow_reset/LAWS.bend",
+    "skills/bend-best-practices/examples/suite/proofs/workflow_reset/model.bend",
+    "skills/bend-best-practices/examples/suite/systems/workloads.bend",
+    "tests/negative/suite/foreign_dependency.js",
+    "tests/negative/suite/laws_import_guard/LAWS.bend"
   ]
 }

@@ -10,6 +10,11 @@ dependently typed Bend 2 language, not an assumption based on old HVM tutorials.
 All Bend paths below are pinned to
 `295e996574573e3a88827b1cf7045b437333c8f0`:
 
+The user also supplied [the official implementation repository](https://github.com/bendlang/bend/tree/main).
+On 2026-10-24 its `main` resolved to this same revision (commit title
+“The flake names 2.0.39 (#1841)”, dated 2026-10-23). The 100-case suite kept the
+existing compiler pin throughout; no newer-main syntax was mixed into it.
+
 | Source | Used for |
 |---|---|
 | [GUIDE.md](https://github.com/bendlang/bend/blob/295e996574573e3a88827b1cf7045b437333c8f0/guide/GUIDE.md) | Syntax, quantities, matching, recursion, templates, IO, array semantics, proof conventions, targets |
