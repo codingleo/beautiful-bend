@@ -5,42 +5,67 @@ permissions:
 
 jobs:
   check:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
-      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: '24'
+          package-manager-cache: false
       - name: Check structure and runner integrity
         run: |
           python3 scripts/coverage.py --check
-          python3 scripts/validate.py --structure-only
+          python3 scripts/validate.py --structure-only --report .validation/structure.json
           python3 -m unittest discover -s tests -v
-      - name: Read source toolchain pin
-        run: |
-          python3 - <<'PY'
-          import json, os
-          pin = json.load(open('toolchain.json'))
-          with open(os.environ['GITHUB_ENV'], 'a') as out:
-              out.write('BEND_COMMIT=' + pin['bend_commit'] + '\n')
-              out.write('BUN_VERSION=' + pin['bun_version'] + '\n')
-          PY
-      - name: Prepare pinned upstream source and Bun
-        run: |
-          git init "$RUNNER_TEMP/bend"
-          git -C "$RUNNER_TEMP/bend" remote add origin https://github.com/bendlang/bend.git
-          git -C "$RUNNER_TEMP/bend" fetch --depth 1 origin "$BEND_COMMIT"
-          git -C "$RUNNER_TEMP/bend" checkout --detach FETCH_HEAD
-          npm install --prefix "$RUNNER_TEMP/bend-tools" "bun@$BUN_VERSION" --no-audit --no-fund
-          mkdir -p "$RUNNER_TEMP/bin"
-          python3 - <<'PY'
-          import os, pathlib, shlex
-          temp = pathlib.Path(os.environ['RUNNER_TEMP'])
-          wrapper = temp / 'bin/bend'
-          args = [str(temp / 'bend-tools/node_modules/.bin/bun'), str(temp / 'bend/bend2/main.ts')]
-          wrapper.write_text('#!/bin/sh\nexport BEND_NO_TELEMETRY=1\nexec ' + shlex.join(args) + ' "$@"\n')
-          wrapper.chmod(0o755)
-          PY
+      - name: Prepare locked source toolchain
+        run: python3 scripts/setup_toolchain.py --directory "$RUNNER_TEMP/bend-tools" --report .validation/setup.json
       - name: Validate 100 cases and fixed-law mutations
-        run: python3 scripts/validate.py --bend "$RUNNER_TEMP/bin/bend" --report .validation/results.json
+        run: python3 scripts/validate.py --bend "$RUNNER_TEMP/bend-tools/bin/bend" --report .validation/results.json
+      - name: Retain checker and runtime evidence
+        if: ${{ always() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: checker-js-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            .validation/structure.json
+            .validation/setup.json
+            .validation/results.json
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 14
+
+  kernel:
+    name: BendTT kernel
+    needs: check
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Build pinned Lean and BendTT toolchain
+        run: python3 scripts/setup_toolchain.py --directory "$RUNNER_TEMP/kernel-tools" --kernel --report .validation/kernel-setup.json
+      - name: Verify every proof with the independent kernel
+        run: >-
+          python3 scripts/validate_kernel.py
+          --bend "$RUNNER_TEMP/kernel-tools/bin/bend"
+          --kernel "$RUNNER_TEMP/kernel-tools/bin/bendtt"
+          --report .validation/kernel.json
+      - name: Retain kernel evidence
+        if: ${{ always() }}
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: bendtt-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            .validation/kernel-setup.json
+            .validation/kernel.json
+          include-hidden-files: true
+          if-no-files-found: warn
+          retention-days: 14

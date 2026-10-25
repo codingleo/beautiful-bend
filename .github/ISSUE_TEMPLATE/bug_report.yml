@@ -1,0 +1,34 @@
+name: Bug or incorrect guidance
+description: Report a reproducible skill, example, packaging or validation problem.
+body:
+  - type: markdown
+    attributes:
+      value: |
+        For security-sensitive findings, follow SECURITY.md instead of posting exploit details or secrets.
+        Include the smallest reproducer you can share publicly; unsupported checks should be labeled untested.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Expected and actual behavior
+      description: Explain the intended behavior and the independently established expectation.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction
+      description: Relevant file, minimal source/input, exact commands, outputs and exit statuses.
+    validations:
+      required: true
+  - type: textarea
+    id: versions
+    attributes:
+      label: Versions and environment
+      description: Repository commit, Bend version/revision, Node version, OS/backend and assistant host if relevant. Use N/A where appropriate.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Validation and scope
+      description: Which checker, kernel, runtime or host checks ran? Include artifact/run links and note skipped or unavailable layers. Identify affected laws without weakening them.

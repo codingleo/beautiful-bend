@@ -8,7 +8,7 @@ pure computation, and laws backed by checked proofs.
 [the 100-case matrix](COVERAGE.md), or
 [the validation record](VALIDATION.md).**
 
-This first version targets **Bend 2.0.39**, from the implementation linked by
+This version targets **Bend 2.0.39**, from the implementation linked by
 [bend-lang.com](https://bend-lang.com/). It does not target the older
 HigherOrderCO/HVM-based Bend. The source commit and supporting tools are pinned
 in [toolchain.json](toolchain.json); do not silently apply the guidance to
@@ -45,7 +45,8 @@ manifests use the standard `skills/` layout. Optional persistent local setup:
 `/plugin marketplace add /path/to/beautiful-bend`, then
 `/plugin install beautiful-bend@beautiful-bend`. See
 [Claude's plugin documentation](https://code.claude.com/docs/en/plugins/create).
-Host loading and automatic triggering remain untested in this environment.
+See [the host smoke record](VALIDATION.md#host-smoke-and-untested-layers) for
+observed CLI results and loading limitations.
 
 **Other assistants:** supply `skills/bend-best-practices/SKILL.md` and its sibling
 resources explicitly. No hooks, external services, or model credentials are
@@ -107,8 +108,10 @@ quantifies over every Nat count; its inductive proof shows that the produced lis
 contains exactly that many units. A mutant that omits units remains well-typed
 but fails the unchanged law. Conversely, map length preservation does **not**
 prove payload correctness. Read the [contract limits](tests/findings/proof-mutations.md)
-before generalizing any claim. Ordinary checker acceptance is recorded; independent
-BendTT verification remains blocked in this environment.
+before generalizing any claim. Both ordinary checker acceptance and independent
+BendTT verification of these 15 proof projects are recorded separately in
+[the validation record](VALIDATION.md). The kernel result covers the 19 stated
+laws; it does not prove the behavior of all 100 cases.
 
 ```text
 .claude-plugin/                  local plugin and marketplace metadata
@@ -124,25 +127,41 @@ scripts/validate.py             offline structure and compiler/runtime checks
 
 ## Validate and contribute
 
+Use Node **24.x**, Python 3.12, npm and Git. The setup installs locked Bun tooling
+and fetches the exact Bend revision into a new directory you own:
+
 ```sh
 python3 scripts/coverage.py --check
 python3 scripts/validate.py --structure-only
 python3 -m unittest discover -s tests -v
-python3 scripts/validate.py --bend /path/to/bend --report .validation/results.json
+python3 scripts/setup_toolchain.py --directory /tmp/beautiful-bend-tools --report .validation/setup.json
+python3 scripts/validate.py --bend /tmp/beautiful-bend-tools/bin/bend --report .validation/results.json
 ```
 
-Full mode requires Bend 2.0.39 and Node. It fails if either is absent or Bend's
-version is wrong; skips are explicit. `--case p06` selects a case for development
-and labels the run as a subset. `--native` additionally builds/runs all 60
-programs on the CPU (clang 14+). `--verdict` adds all 15 kernel proof checks
-(Lean 4.34.0 or a matching `BENDTT`). Neither option tests a GPU. If Claude Code
-is installed, also run `claude plugin validate . --strict`.
+Choose an unused setup directory; the script refuses to reset existing work.
+It needs network access and does not execute the website installer. Full mode
+requires exactly Bend 2.0.39 and stable Node 24.x; it fails on missing or wrong
+tools. `--case p06` selects a labeled development subset. `--native` additionally
+builds/runs the 60 programs on the CPU (clang 14+); this backend remains untested.
 
-See [VALIDATION.md](VALIDATION.md) for the actual run and reproducible source
-toolchain setup, and [CONTRIBUTING.md](CONTRIBUTING.md) for change expectations.
-The included CI runs structure and source-pinned compiler/JS checks. It does not
-publish anything. [Actions](https://github.com/codingleo/beautiful-bend/actions)
-runs the same complete suite; the validation record identifies observed results.
+On Linux x86_64, add `--kernel` to setup to download the SHA256-pinned Lean 4.34.0
+archive and build BendTT from the same Bend revision. Then run:
+
+```sh
+python3 scripts/validate_kernel.py --bend /tmp/beautiful-bend-tools/bin/bend --kernel /tmp/beautiful-bend-tools/bin/bendtt --report .validation/kernel.json
+```
+
+This separate runner checks all 15 proof projects and direct valid/invalid kernel
+controls. See [CONTRIBUTING.md](CONTRIBUTING.md) for prerequisites, failure handling
+and development steps, [COMPATIBILITY.md](COMPATIBILITY.md) for supported targets,
+and [VALIDATION.md](VALIDATION.md) for observed results and limits.
+
+[CI](https://github.com/codingleo/beautiful-bend/actions) has distinct **`check`**
+and **`BendTT kernel`** jobs. It retains named JSON reports for **14 days**, including
+failed runs when reports exist. It does not publish anything. Questions and bugs
+use [support](SUPPORT.md); sensitive findings use [security reporting](SECURITY.md).
+Contributors follow the [code of conduct](CODE_OF_CONDUCT.md). Maintainers have a
+[settings checklist](docs/MAINTAINER_CHECKLIST.md) and [release guide](docs/RELEASING.md).
 
 ## Provenance and license
 

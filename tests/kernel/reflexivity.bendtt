@@ -1,0 +1,4 @@
+Flag : *(.Q2) = <Off, On>
+
+same : {.Off == .Off : Flag} =
+  {==}

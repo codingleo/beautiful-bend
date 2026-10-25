@@ -1,0 +1,375 @@
+{
+  "recorded_date": "2026-10-25",
+  "base_commit": "30f6f15c5b34c04b4bc7b159237762c4bf241dab",
+  "expected_toolchain": {
+    "bend_version": "2.0.39",
+    "bend_repository": "https://github.com/bendlang/bend.git",
+    "bend_commit": "295e996574573e3a88827b1cf7045b437333c8f0",
+    "bun_version": "1.4.4",
+    "node_major": 24,
+    "lean_version_for_verdict": "4.34.0",
+    "lean_linux_x86_64": {
+      "url": "https://github.com/leanprover/lean4/releases/download/v4.34.0/lean-4.34.0-linux.tar.zst",
+      "sha256": "caaa98356098c85dc0fcbbd28e1ec66f39eb6551829972b752ff20e1286b646b"
+    }
+  },
+  "validator_unit_tests": 23,
+  "corpus_changed": false,
+  "suite": {
+    "status": "passed",
+    "scope": "full-100",
+    "started_utc": "2026-10-25T22:40:20.186166+00:00",
+    "command_count": 320,
+    "skipped": [
+      "BendTT kernel (--verdict not requested)",
+      "Native CPU compilation/execution (--native not requested)",
+      "GPU execution, parallel scheduling and performance measurement"
+    ],
+    "full_local_report_sha256": "c15768f4ccd66eb3dce7907d30be31ecfd4c7e4567fe68228bc00e5a07b2b60b",
+    "check_outcomes": {
+      "passed": 320
+    },
+    "case_outcomes": {
+      "p01": "passed",
+      "p02": "passed",
+      "p03": "passed",
+      "p04": "passed",
+      "p05": "passed",
+      "p06": "passed",
+      "p07": "passed",
+      "p08": "passed",
+      "p09": "passed",
+      "p10": "passed",
+      "p11": "passed",
+      "p12": "passed",
+      "p13": "passed",
+      "p14": "passed",
+      "p15": "passed",
+      "r01": "passed",
+      "r02": "passed",
+      "r03": "passed",
+      "r04": "passed",
+      "r05": "passed",
+      "r06": "passed",
+      "r07": "passed",
+      "r08": "passed",
+      "r09": "passed",
+      "r10": "passed",
+      "r11": "passed",
+      "r12": "passed",
+      "r13": "passed",
+      "r14": "passed",
+      "r15": "passed",
+      "r16": "passed",
+      "r17": "passed",
+      "r18": "passed",
+      "r19": "passed",
+      "r20": "passed",
+      "r21": "passed",
+      "r22": "passed",
+      "r23": "passed",
+      "r24": "passed",
+      "r25": "passed",
+      "r26": "passed",
+      "r27": "passed",
+      "r28": "passed",
+      "r29": "passed",
+      "r30": "passed",
+      "r31": "passed",
+      "r32": "passed",
+      "r33": "passed",
+      "r34": "passed",
+      "r35": "passed",
+      "r36": "passed",
+      "r37": "passed",
+      "r38": "passed",
+      "r39": "passed",
+      "r40": "passed",
+      "r41": "passed",
+      "r42": "passed",
+      "r43": "passed",
+      "r44": "passed",
+      "r45": "passed",
+      "r46": "passed",
+      "r47": "passed",
+      "r48": "passed",
+      "r49": "passed",
+      "r50": "passed",
+      "r51": "passed",
+      "r52": "passed",
+      "r53": "passed",
+      "r54": "passed",
+      "r55": "passed",
+      "r56": "passed",
+      "r57": "passed",
+      "r58": "passed",
+      "r59": "passed",
+      "r60": "passed",
+      "n01": "passed",
+      "n02": "passed",
+      "n03": "passed",
+      "n04": "passed",
+      "n05": "passed",
+      "n06": "passed",
+      "n07": "passed",
+      "n08": "passed",
+      "n09": "passed",
+      "n10": "passed",
+      "n11": "passed",
+      "n12": "passed",
+      "n13": "passed",
+      "n14": "passed",
+      "n15": "passed",
+      "n16": "passed",
+      "n17": "passed",
+      "n18": "passed",
+      "n19": "passed",
+      "n20": "passed",
+      "n21": "passed",
+      "n22": "passed",
+      "n23": "passed",
+      "n24": "passed",
+      "n25": "passed"
+    },
+    "manifest_sha256": "cd9e1507a37db180e1fe22e135fb582824231f11e09edcd91e11886379de46ed"
+  },
+  "kernel": {
+    "status": "passed",
+    "scope": "kernel-15",
+    "started_utc": "2026-10-25T22:31:43.823120+00:00",
+    "command_count": 18,
+    "cases": [
+      {
+        "id": "p01",
+        "file": "skills/bend-best-practices/examples/laws/PROOF.bend",
+        "sha256": "ddd281ef9f2694167b04af004dcfe993ef495eabf5b19a74bd433d7df314beca",
+        "law_sha256": "9f1702974895bc92985fd1d75154f08e72a14fa5e8b9a0fca5657ffc49638804",
+        "status": "passed"
+      },
+      {
+        "id": "p02",
+        "file": "skills/bend-best-practices/examples/suite/proofs/toggle/PROOF.bend",
+        "sha256": "3356849799d0eb5516d2109af3fd4b6961158154819d20943cec5035bbc84544",
+        "law_sha256": "3d631330f3d10fdb0afe8cff44e8fc441fe45358169ad42dee5367e62be703f6",
+        "status": "passed"
+      },
+      {
+        "id": "p03",
+        "file": "skills/bend-best-practices/examples/suite/proofs/latch/PROOF.bend",
+        "sha256": "b87a66038e503ab13dabadf00540e481a37a1405b68153d6f278cc66b941ae71",
+        "law_sha256": "182cc90a1f4e6c25559836822f4ea375634f5069b60547f264d9373f23415616",
+        "status": "passed"
+      },
+      {
+        "id": "p04",
+        "file": "skills/bend-best-practices/examples/suite/proofs/traffic_cycle/PROOF.bend",
+        "sha256": "a9884a9480f1ea8990af40cdb93f1198effc8607d7dd4f2cb42370a4e6ba0158",
+        "law_sha256": "882c73eb5de98d09a2493c1afd82bc837df7da44fe2a15070c3555bac5f4c9af",
+        "status": "passed"
+      },
+      {
+        "id": "p05",
+        "file": "skills/bend-best-practices/examples/suite/proofs/addition_associativity/PROOF.bend",
+        "sha256": "42d10c520771d614f576346ba425928a600db0168c4a268e53a1842417f6261c",
+        "law_sha256": "843d5e9f854a42a9025417b0fd8060a161090140af08e572886a7210a3677767",
+        "status": "passed"
+      },
+      {
+        "id": "p06",
+        "file": "skills/bend-best-practices/examples/suite/proofs/replicate_length/PROOF.bend",
+        "sha256": "e8cac7aa3e5504b61882935ad1a6525b9447f98a3f49c7feb8cb179078d6cbd4",
+        "law_sha256": "31e68591cdba8f4ef7b3dc6c07e8a31c577138adba1312fc7b60994839772f3c",
+        "status": "passed"
+      },
+      {
+        "id": "p07",
+        "file": "skills/bend-best-practices/examples/suite/proofs/append_identity/PROOF.bend",
+        "sha256": "659043f94ba7e61e10de83842b9818e3054ab7e0956c89e7a8fa6974b883e156",
+        "law_sha256": "36183b3a2c633a5d1fb3250e93315f8c8f3320d04ff391dca44dc0020fc79f04",
+        "status": "passed"
+      },
+      {
+        "id": "p08",
+        "file": "skills/bend-best-practices/examples/suite/proofs/append_length/PROOF.bend",
+        "sha256": "e8f5a042b5d2c7fe5067eeab076cff01a4de397176b0fcf1f7cd180a44927f34",
+        "law_sha256": "80a5ad11638a8fadecfe41d620d2c598b25a40155c09c2540832aea457330d88",
+        "status": "passed"
+      },
+      {
+        "id": "p09",
+        "file": "skills/bend-best-practices/examples/suite/proofs/map_length/PROOF.bend",
+        "sha256": "d5f4e180197af8dd5f9f8bfcf79e5913a19fa0958b1edd800d35796de269ca05",
+        "law_sha256": "5ec3ed6da3e33f31e2aebbf54709bbf52aedd6889651354438a5eb8bb656ed96",
+        "status": "passed"
+      },
+      {
+        "id": "p10",
+        "file": "skills/bend-best-practices/examples/suite/proofs/optional_roundtrip/PROOF.bend",
+        "sha256": "058f1b47387f0b8b91982287b7817632d4bb5869bb146a4bb82339501f61c363",
+        "law_sha256": "e19e51ff971161e65e017d867eeb974800a409e20d08448dfc1d6c4ae8b22a7a",
+        "status": "passed"
+      },
+      {
+        "id": "p11",
+        "file": "skills/bend-best-practices/examples/suite/proofs/clamp_one/PROOF.bend",
+        "sha256": "d4cc8f80e4b0264205e0862fa5bbbe0496454934724a5784e1377a4ebe31b00a",
+        "law_sha256": "1980808d6b569d72f9dcd0999e08205d9a49826139996028063b5467e38ba403",
+        "status": "passed"
+      },
+      {
+        "id": "p12",
+        "file": "skills/bend-best-practices/examples/suite/proofs/workflow_reset/PROOF.bend",
+        "sha256": "b0ad49a1e745acd6c836beac2718ae00915e447bc5381ec5d7372a352c5e760c",
+        "law_sha256": "3655d6027ca4e7dcb3f3ad219d8f289b2a02c46bbefd6227be2e594dcbf6fc9c",
+        "status": "passed"
+      },
+      {
+        "id": "p13",
+        "file": "skills/bend-best-practices/examples/suite/proofs/equality_transport/PROOF.bend",
+        "sha256": "b282389bc8ed5cd216c5127d4754f70b519865b49755cd54b84b37b649f11aa9",
+        "law_sha256": "b2980c89eb3057a233aab3f755b047c037cabfe01145041ea43408ee594470ac",
+        "status": "passed"
+      },
+      {
+        "id": "p14",
+        "file": "skills/bend-best-practices/examples/suite/proofs/tree_mirror/PROOF.bend",
+        "sha256": "14e1a99305bc883f7c43b5a3024e1f4e878725dabfb898ff338ef474013c010e",
+        "law_sha256": "a03d2c27e67f84063b4adc4ff675ac3b8e1d6c591b5fab62bc35303c88a7c477",
+        "status": "passed"
+      },
+      {
+        "id": "p15",
+        "file": "skills/bend-best-practices/examples/suite/proofs/predecessor_witness/PROOF.bend",
+        "sha256": "b5f279afcc35891a6dfa556305404e4a91bd4ecd2546c47b80a1900c0fd7fc6d",
+        "law_sha256": "2acb41a3931e8614a214d11bc774888f4ab99f7a10d2582e89e807c4365fabc0",
+        "status": "passed"
+      }
+    ],
+    "skipped": [
+      "Runtime, native/GPU behavior and performance; not kernel claims"
+    ],
+    "checks": [
+      {
+        "name": "Bend version",
+        "status": "passed",
+        "exit": 0
+      },
+      {
+        "name": "direct kernel: valid reflexivity",
+        "status": "passed",
+        "exit": 0
+      },
+      {
+        "name": "direct kernel: reject unequal labels",
+        "status": "passed",
+        "exit": 1
+      },
+      {
+        "name": "p01 kernel verdict",
+        "status": "passed",
+        "exit": 0
+      },
+      {
+        "name": "p02 kernel verdict",
+        "status": "passed",
+        "exit": 0
+      },
+      {
+        "name": "p03 kernel verdict",
+        "status": "passed",
+        "exit": 0
+      },
+      {
+        "name": "p04 kernel verdict",
+        "status": "passed",
+        "exit": 0
+      },
+      {
+        "name": "p05 kernel verdict",
+        "status": "passed",
+        "exit": 0
+      },
+      {
+        "name": "p06 kernel verdict",
+        "status": "passed",
+        "exit": 0
+      },
+      {
+        "name": "p07 kernel verdict",
+        "status": "passed",
+        "exit": 0
+      },
+      {
+        "name": "p08 kernel verdict",
+        "status": "passed",
+        "exit": 0
+      },
+      {
+        "name": "p09 kernel verdict",
+        "status": "passed",
+        "exit": 0
+      },
+      {
+        "name": "p10 kernel verdict",
+        "status": "passed",
+        "exit": 0
+      },
+      {
+        "name": "p11 kernel verdict",
+        "status": "passed",
+        "exit": 0
+      },
+      {
+        "name": "p12 kernel verdict",
+        "status": "passed",
+        "exit": 0
+      },
+      {
+        "name": "p13 kernel verdict",
+        "status": "passed",
+        "exit": 0
+      },
+      {
+        "name": "p14 kernel verdict",
+        "status": "passed",
+        "exit": 0
+      },
+      {
+        "name": "p15 kernel verdict",
+        "status": "passed",
+        "exit": 0
+      }
+    ],
+    "full_local_report_sha256": "1196cd30bb3ccaad8cd220d546dac406160105121e49b89b515b46ae73bc35fd",
+    "direct_controls": [
+      {
+        "name": "direct kernel: valid reflexivity",
+        "status": "passed",
+        "exit": 0,
+        "stdout": "ALL PROOFS CHECK\n",
+        "stderr": ""
+      },
+      {
+        "name": "direct kernel: reject unequal labels",
+        "status": "passed",
+        "exit": 1,
+        "stdout": "SOME PROOFS FAIL\nIn same:\nexpected: .Off\nobserved: .On\n",
+        "stderr": ""
+      }
+    ]
+  },
+  "setup": {
+    "status": "passed",
+    "started_utc": "2026-10-25T22:28:50.204227+00:00",
+    "kernel_sha256": "e365eba1741602bb45261aa0eb6bd2c6f5db885d4b9d4cd603a27bc3c5a9ed18",
+    "kernel_source_sha256": "d7268ff461de974bd4cd875d9766c71c62ee6b2e6411b9bab84839870db68a80",
+    "lean": "Lean (version 4.34.0, x86_64-unknown-linux-gnu, commit 293d5d0c0c3f3dded4688b3ccd6a33939ac5102b, Release)"
+  },
+  "host_smoke": {
+    "host": "codex 0.163.0",
+    "exit_code": 1,
+    "target_discovered": false,
+    "responses": [],
+    "stderr": "WARNING: proceeding, even though we could not create PATH aliases: Read-only file system (os error 30)\nError: failed to initialize sqlite state runtime under /run/codex-environment/codex-home: failed to initialize state runtime at /run/codex-environment/codex-home\n"
+  }
+}

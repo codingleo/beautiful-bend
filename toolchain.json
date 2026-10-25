@@ -4,5 +4,9 @@
   "bend_commit": "295e996574573e3a88827b1cf7045b437333c8f0",
   "bun_version": "1.4.4",
   "node_major": 24,
-  "lean_version_for_verdict": "4.34.0"
+  "lean_version_for_verdict": "4.34.0",
+  "lean_linux_x86_64": {
+    "url": "https://github.com/leanprover/lean4/releases/download/v4.34.0/lean-4.34.0-linux.tar.zst",
+    "sha256": "caaa98356098c85dc0fcbbd28e1ec66f39eb6551829972b752ff20e1286b646b"
+  }
 }

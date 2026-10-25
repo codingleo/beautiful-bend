@@ -1,0 +1,13 @@
+{
+  "name": "beautiful-bend-validation-tools",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Pinned source-runner tooling; not a published package",
+  "license": "MIT",
+  "engines": {
+    "node": ">=24.0.0 <25.0.0"
+  },
+  "dependencies": {
+    "bun": "1.4.4"
+  }
+}

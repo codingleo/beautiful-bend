@@ -17,8 +17,10 @@ their 19 law declarations are SHA256-pinned. Every proof project also has a
 [targeted mutation](tests/findings/proof-mutations.md) with unchanged LAWS;
 13 mutated implementations must still pass standalone checking, while their proofs fail.
 The other two mutations reject an incorrect proof/witness. Rejections require exit 1, the Bend failure
-verdict, and a case-specific diagnostic. None establishes BendTT, native/GPU
-execution, parallel scheduling, performance, or broad agent effectiveness.
+verdict, and a case-specific diagnostic. These 100-case checks do not establish
+independent kernel verification; the separate BendTT runner verifies the 15 proof
+projects. Neither run establishes native/GPU execution, parallel scheduling,
+performance, or broad agent effectiveness.
 
 | ID | Category | Contract and independent oracle | Source |
 |---|---|---|---|
