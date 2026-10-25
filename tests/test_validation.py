@@ -4,6 +4,8 @@ import importlib.util
 import json
 from pathlib import Path
 import subprocess
+import sys
+import tempfile
 from unittest import mock
 import unittest
 
@@ -39,6 +41,38 @@ class ResultIntegrity(unittest.TestCase):
     def test_expected_compiler_rejection_is_accepted(self):
         validate.assess(self.result(1, err="SOME PROOFS FAIL\nf (consumed more than once)"),
                         diagnostic="consumed more than once")
+
+    def test_supported_node_security_patch_is_accepted(self):
+        validate.assess(self.result(0, 'v24.19.0\n'), node_major=24)
+
+    def test_wrong_node_major_is_rejected_despite_success_exit(self):
+        with self.assertRaisesRegex(ValueError, 'Node 24.x'):
+            validate.assess(self.result(0, 'v22.19.0\n'), node_major=24)
+
+    def test_node_version_must_be_a_single_stable_version(self):
+        for output in ('24.19.0', 'v24.19.0-rc.1\n', 'v24.19.0\nextra\n'):
+            with self.subTest(output=output), self.assertRaises(ValueError):
+                validate.assess(self.result(0, output), node_major=24)
+
+    def test_wrong_node_stops_suite_and_writes_failure_report(self):
+        with tempfile.TemporaryDirectory() as directory:
+            directory = Path(directory)
+            bend = directory / 'bend'
+            bend.write_text('#!/bin/sh\nprintf "bend 2.0.39\\n"\n')
+            node = directory / 'node'
+            node.write_text('#!/bin/sh\nprintf "v22.19.0\\n"\n')
+            for tool in (bend, node):
+                tool.chmod(0o755)
+            report = directory / 'failure.json'
+            result = subprocess.run([sys.executable, str(validate.ROOT / 'scripts/validate.py'),
+                                     '--bend', str(bend), '--node', str(node), '--report', str(report)],
+                                    capture_output=True, text=True, timeout=30)
+            self.assertEqual(result.returncode, 1)
+            data = json.loads(report.read_text())
+            self.assertEqual(data['status'], 'failed')
+            self.assertEqual(data['cases'], [])
+            self.assertEqual(data['command_count'], 2)
+            self.assertEqual(data['checks'][-1]['status'], 'failed')
 
     def test_timeout_is_recorded_and_fails(self):
         report = {"checks": []}

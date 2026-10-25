@@ -69,7 +69,7 @@
       "Keeps LAWS.bend byte-identical and discharges the universal size obligation with a total proof, without holes, unsafe definitions or bypassed imports.",
       "Duplicates every value adjacently and in order, using legal affine quantities and structural recursion.",
       "Exercises empty and varied nonempty samples with exact JS assertions; a regression keeping one copy fails against unchanged laws.",
-      "Distinguishes the proved length property from payload/order sample tests and unavailable independent kernel verification."
+      "Distinguishes the proved length property from payload/order sample tests and the independent kernel verification status."
     ]
   }
 ]

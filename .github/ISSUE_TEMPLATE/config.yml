@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Support and contribution routing
+    url: https://github.com/codingleo/beautiful-bend/blob/main/SUPPORT.md
+    about: Choose the appropriate public or security-reporting route.
+  - name: Security reporting policy
+    url: https://github.com/codingleo/beautiful-bend/blob/main/SECURITY.md
+    about: Read the policy before sharing sensitive vulnerability details.

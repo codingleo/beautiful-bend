@@ -1,0 +1,22 @@
+name: Skill or example improvement
+description: Propose a focused improvement with a language source and validation plan.
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Problem and proposed behavior
+      description: Who needs this and what would change? Include the relevant Bend generation/version.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and validation plan
+      description: Link primary sources; describe laws, independent expected results, boundaries and a meaningful negative/mutation check where applicable.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Compatibility and limits
+      description: Note affected hosts/backends, licensing or dependency changes, and what would remain untested.

@@ -9,8 +9,9 @@ mutations and a repeatable runner. See its `VALIDATION.md` for dated evidence.
 
 Read the law before the implementation or proof. These 15 projects contain 19
 law declarations, accepted by the ordinary checker. Each has a targeted
-mutation checked by the repository runner. **BendTT kernel verification has
-not run successfully.** The claims establish the named invariants only;
+mutation checked by the repository runner. A separate pinned BendTT run accepted
+all 15 projects on 2026-10-25, with valid/invalid direct kernel controls.
+This establishes the named invariants only, not all runtime behavior;
 see [proof scope](proofs.md#use-laws-to-drive-the-implementation).
 
 | ID | Invariant / obligation | Specification | Proof |

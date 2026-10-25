@@ -109,7 +109,7 @@ def structure():
     require(market["plugins"][0]["name"] == plugin["name"] and market["plugins"][0]["source"] == "./",
             "Marketplace must load the local plugin root")
     for doc in ROOT.rglob("*.md"):
-        if ".git" in doc.parts or ".validation" in doc.parts:
+        if any(part in doc.parts for part in (".git", ".validation", "node_modules")):
             continue
         for target in re.findall(r"\[[^\]]+\]\(([^)]+)\)", doc.read_text()):
             if re.match(r"[a-z]+://|#|mailto:", target):
@@ -145,7 +145,7 @@ def validate_mutations(manifest, cases, root=ROOT):
     return mutations
 
 
-def assess(result, *, stdout=None, verdict=False, diagnostic=None):
+def assess(result, *, stdout=None, verdict=False, diagnostic=None, node_major=None):
     """Never count a missing tool, crash or unrelated error as a rejection pass."""
     combined = result.stdout + result.stderr
     if diagnostic is not None:
@@ -159,18 +159,24 @@ def assess(result, *, stdout=None, verdict=False, diagnostic=None):
             require("SOME PROOFS FAIL" not in combined, f"Conflicting proof verdict: {combined}")
         if stdout is not None:
             require(result.stdout == stdout, f"Output mismatch: expected {stdout!r}, got {result.stdout!r}")
+        if node_major is not None:
+            version = re.fullmatch(r"v([0-9]+)\.[0-9]+\.[0-9]+\n?", result.stdout)
+            require(version is not None and int(version[1]) == node_major,
+                    f"Expected stable Node {node_major}.x, got {result.stdout!r}")
 
 
 class Runner:
-    def __init__(self, report):
+    def __init__(self, report, *, env=None, timeout=60):
         self.report = report
+        self.env = env or {}
+        self.timeout = timeout
 
     def run(self, label, command, **expect):
         entry = {"name": label, "command": command, "expect": expect, "status": "failed"}
         self.report["checks"].append(entry)
         try:
-            result = subprocess.run(command, cwd=ROOT, text=True, capture_output=True, timeout=60,
-                                    env={**os.environ, "BEND_NO_TELEMETRY": "1"})
+            result = subprocess.run(command, cwd=ROOT, text=True, capture_output=True, timeout=self.timeout,
+                                    env={**os.environ, "BEND_NO_TELEMETRY": "1", **self.env})
             entry.update(exit=result.returncode, stdout=result.stdout, stderr=result.stderr)
             assess(result, **expect)
             entry["status"] = "passed"
@@ -271,7 +277,9 @@ def main():
         else:
             version = report["expected_toolchain"]["bend_version"]
             require(runner.run("Bend version", [args.bend, "version"], stdout=f"bend {version}\n"), "Bend toolchain unavailable or wrong version")
-            require(runner.run("Node version", [args.node, "--version"]), "Node unavailable")
+            require(runner.run("Node version", [args.node, "--version"],
+                               node_major=report["expected_toolchain"]["node_major"]),
+                    "Node unavailable or unsupported major version")
             selected = [case for case in cases if not args.case or case["id"] in args.case]
             ok = True
             with tempfile.TemporaryDirectory(prefix="beautiful-bend-") as directory:
